@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+}
+
+header {
+    height: 68px;
+    background-color: rgb(239, 193, 210);
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+header .logo {
+    font-size: 40px;
+    color:  rgb(0, 0, 0);
+    font-family: "Mulish";
+    font-weight: bold;
+    text-decoration:  none;
+    transition: 0.3s, ease-in-out;
+    transition-property: color;
+    text-shadow: 1px 1px 2px rgb(67, 58, 58); 
+}
+
+header .logo:hover {
+    color: rgb(161, 255, 244);
+    
+}
+
+header .container  {
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 125px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .navbar a {
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    transition: 0.3s, ease-in-out;
+    transition-property: color, text-shadow;
+    text-decoration:  none;
+    font-family: par;
+}
+
+header .navbar a:hover {
+    color: rgb(198, 168, 240);
+}
+
+header .navbar{
+    display: flex;
+    justify-content:space-between ; 
+    align-items: center;
+    gap: 20px ;  
+}
