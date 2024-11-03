@@ -1,0 +1,43 @@
+
+.cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.card-principal {
+	width: 500px;
+	height: 200px;
+	background-color: rgb(239, 193, 210);
+	border-radius: 25px;
+	border: solid 4px rgb(198, 168, 240); 
+	margin: 20px ;
+	padding: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+}
+
+.imagem {
+width: 70px;
+height: 70px;
+margin-top: 10px;
+margin-bottom: 20px;
+border-radius: 50% ;
+}
+
+
+h1 {
+font-family: "Playwrite";;
+font-size: 20px;
+}
+
+.mensagens {
+
+    font-family: "Playwrite";
+	font-size: 15px;
+}
+
+
+	

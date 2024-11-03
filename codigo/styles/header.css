@@ -5,7 +5,7 @@ body {
 header {
     height: 68px;
     background-color: rgb(239, 193, 210);
-    border-bottom: 2px solid rgb(0, 0, 0);
+    border-bottom: 3px solid rgb(0, 0, 0);
 }
 
 header .logo {
@@ -16,7 +16,6 @@ header .logo {
     text-decoration:  none;
     transition: 0.3s, ease-in-out;
     transition-property: color;
-    text-shadow: 1px 1px 2px rgb(67, 58, 58); 
 }
 
 header .logo:hover {
@@ -39,7 +38,7 @@ header .navbar a {
     transition: 0.3s, ease-in-out;
     transition-property: color, text-shadow;
     text-decoration:  none;
-    font-family: par;
+    font-family: "Playwrite";
 }
 
 header .navbar a:hover {
@@ -52,3 +51,10 @@ header .navbar{
     align-items: center;
     gap: 20px ;  
 }
+
+header .navbar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+
