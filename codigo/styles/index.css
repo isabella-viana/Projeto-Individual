@@ -17,6 +17,8 @@
     justify-content: flex-start;
     align-items: center;
     box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
     
 }
 
@@ -25,6 +27,7 @@
     font-size: 68px; 
     transition: 0.3s, ease-in-out;
     transition-property: color;
+    letter-spacing: 5px;
       
 }
 .banner .text h2:hover {
@@ -35,7 +38,10 @@
 
 .banner .text p{
     color: rgb(239, 193, 210);
-    font-size: 20px;  
+    font-size: 22px;;  
+    line-height: 28px;
+    padding-bottom: px;
+    letter-spacing: 3px;
 }
 
 
@@ -77,4 +83,16 @@
     height: 450px;
     width: 500px;
     margin: 0;
+}
+.img-spotify{
+    height: 50px;
+    width: 100px;
+    margin: 0; 
+}
+
+.img-pegamino{
+    height: 250px;
+    width: 230px;
+    margin: 0; 
+
 }
