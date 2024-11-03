@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/cadastro.css">
+    
 </head>
 <body>
     <header>
@@ -23,6 +25,48 @@
             </ul>
         </div>
 
+        <div class="cadastro">
+
+            <div class="container">
+              <div class="card card-cadastro">
+                <h2>Cadastro</h2>
+                <div class="formulario">
+                  <div class="campo">
+                    <span>Código de autorização</span>
+                    <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
+                  </div> <br>
+                  <div class="campo">
+                    <span>Nome:</span>
+                    <input id="nome_input" type="text" placeholder="Seu nome" />
+                  </div> <br>
+                  <div class="campo">
+                    <span>Categoria</span>
+                    <select id="input_categoria">
+                        <option value="#">Selecione a Categoria</option>
+                        <option value="adm">Administradores</option>
+                        <option value="familia">Família</option>
+                        <option value="amigos">Amigos</option>
+                    </select>
+                </div>
+                <br>
+                  
+                  <div class="campo">
+                    <span>E-mail:</span>
+                    <input id="email_input" t ype="text" placeholder="email@gmail.com" />
+                  </div> <br>
+                  <div class="campo">
+                    <span>Senha:</span>
+                    <input id="senha_input" type="password" placeholder="******" />
+                  </div> <br>
+                  <div class="campo">
+                    <span>Confirmação da Senha:</span>
+                    <input id="confirmacao_senha_input" type="password" placeholder="******" />
+                  </div>
+                  <button class="botao">Cadastrar</button>
+                </div>
+              </div>
+            </div>
+          </div>    
 
 
 
