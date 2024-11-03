@@ -1,11 +1,11 @@
-.cadastro .container {
+.login .container {
     margin: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   div.card  {
-    height: 580px;
+    height: 500px;
     width: 550px;
     border-radius: 10px;
     justify-content: center;
@@ -22,6 +22,9 @@
 
   }
   input:focus {
+    outline: none;
+}
+select:focus {
     outline: none;
 }
   div.campo input {

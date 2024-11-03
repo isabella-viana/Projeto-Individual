@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="Mulish" href="https://fonts.googleapis.com">
+<link rel="Playwrite" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/login.css">
 </head>
 <body>
     <header>
@@ -22,6 +26,41 @@
                 
             </ul>
         </div>
+
+        <div class="login">
+
+            <div class="container">
+              <div class="card card-cadastro">
+                <h2>Login</h2>
+                <div class="formulario">
+                  <div class="campo">
+                    <span>Código de autorização</span>
+                    <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
+                  </div> <br>
+                  <div class="campo">
+                    <span>Nome:</span>
+                    <input id="nome_input" type="text" placeholder="Seu nome" />
+                  </div> <br>
+                  <div class="campo">
+                    <span>Categoria</span>
+                    <select id="input_categoria">
+                        <option value="#">Selecione a Categoria</option>
+                        <option value="adm">Administradores</option>
+                        <option value="familia">Família</option>
+                        <option value="amigos">Amigos</option>
+                    </select>
+                </div>
+                <br>
+                  <div class="campo">
+                    <span>Senha:</span>
+                    <input id="senha_input" type="password" placeholder="******" />
+                  </div> <br>
+                  <button class="botao">Login</button>
+                </div>
+              </div>
+            </div>
+          </div>    
+
 
 </body>
 </html>
