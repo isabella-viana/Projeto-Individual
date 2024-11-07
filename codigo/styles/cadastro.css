@@ -34,6 +34,9 @@
   input:focus {
     outline: none;
 }
+select:focus {
+  outline: none;
+}
   div.campo input {
     height: 25px;
     width: 80%;

@@ -58,8 +58,7 @@ select {
         border-radius: 5px;
         margin-left: 10%; 
         border: 4px solid  rgb(198, 168, 240);
-        text-align: center;
-        text-align: center;
+        text-align: center; 
         transition: 0.3s, ease-in-out;
     
 }
@@ -100,11 +99,30 @@ button {
     background: rgb(161, 255, 244);
     border: 0px;
     margin: 10px;
-    margin-left: 40%; 
+    margin-left: 38%; 
     letter-spacing: 2px;
     font-family: "Mulish";
     border: 4px solid  rgb(198, 168, 240);
 
+}
+
+.login a{
+  outline: none;
+}
+
+.login a{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    transition: 0.3s, ease-in-out;
+    transition-property: color;
+    margin-left: 41%; 
+    font-family: "Playwrite";
+
+}
+
+.login a:hover{
+  color: rgb(0, 0, 0);
+  text-decoration:  none;
 }
 
 
