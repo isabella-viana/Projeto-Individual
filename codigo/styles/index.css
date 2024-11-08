@@ -58,9 +58,9 @@
 .sentimento_emocao .container .emocao {
     display: flex;
     align-items: center;
-    width: 100%;
+  
     margin: 20px; /* Adiciona espaço entre os itens */
-    
+    height: 550px;
     text-align: center;
     padding: 0;
     margin: 0; 
@@ -92,14 +92,14 @@
 }
 
 .img-marionete {
-    height: 450px;
-    width: 650px;
+    height: 550px;
+    width: 700px;
     margin: 0;
 }
 
 .img-direcao {
-    height: 450px;
-    width: 663px;
+    height: 550px;
+    width: 800px;
     margin: 0;
 }
 .img-spotify{

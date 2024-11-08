@@ -4,13 +4,13 @@ body {
 
 header {
     height: 95px;
-    background-color: rgb(239, 193, 210);
+    background-color:  rgb(181, 130, 252);
     border-bottom: 3px solid rgb(0, 0, 0);
 }
 
 header .logo {
     font-size: 50px;
-    color:  rgb(0, 0, 0);
+    color:  rgb(222, 210, 236);
     font-family: "Mulish";
     font-weight: bold;
     text-decoration:  none;
@@ -33,7 +33,7 @@ header .container  {
 }
 
 header .navbar a {
-    color: rgb(0, 0, 0);
+    color:  rgb(222, 210, 236);
     font-size: 20px;
     transition: 0.3s, ease-in-out;
     transition-property: color;

@@ -1,4 +1,10 @@
-.login .container {
+ body{
+  overflow: hidden;
+ }
+ 
+ .area {
+    width: 45%;
+    height: 100vh;
     margin: 15px;
     display: flex;
     justify-content: center;
@@ -8,23 +14,25 @@
     position: fixed; 
     top: 0;
     left: 0;
-    min-width: 100%;
-    min-height: 80%;
+    min-width: 55%;
+    min-height: 70%;
     width: auto;
     height: auto;
     z-index: -1;
 }
-  div.card  {
-    height: 500px;
-    width: 550px;
-    border-radius: 10px;
+  .login {
+    width: 52%;
+    height: 448px;
+    position: relative;
+    bottom: 580px;
+    left: 590px;
     justify-content: center;
     display: flex;
     flex-direction: column;
     background-color: rgb(239, 193, 210);
     border: 4px solid  rgb(198, 168, 240);
   }
-  div.card h2{
+  .login h2{
     justify-content: center;
     align-items: center;
     display: flex;
@@ -48,7 +56,7 @@ select:focus {
     transition-property: color;
 }
 div.campo input:hover{
-  border: 4px solid  rgb(161, 255, 244);
+  border: 4px solid   rgb(247, 159, 191);
 
 }
 select {    
@@ -74,7 +82,7 @@ select option {
 
 }
 
-.card h2{
+.login h2{
     font-size: 40px; 
     letter-spacing: 2px;
     font-family: "Mulish";
