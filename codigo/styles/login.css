@@ -5,7 +5,6 @@
  .area {
     width: 45%;
     height: 100vh;
-    margin: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,103 +13,85 @@
     position: fixed; 
     top: 0;
     left: 0;
-    min-width: 55%;
-    min-height: 70%;
+    min-width: 45%;
+    min-height: 30%;
     width: auto;
     height: auto;
     z-index: -1;
 }
   .login {
-    width: 52%;
-    height: 448px;
+    width: 55%;
+    margin: 0;
+    height: 545px;
     position: relative;
-    bottom: 580px;
-    left: 590px;
+    bottom: 638px;
+    left: 615px;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    background-color: rgb(239, 193, 210);
-    border: 4px solid  rgb(198, 168, 240);
+    background-color: #0c0126;
   }
+
+  /* #010826 
+  #0c0126*/
   .login h2{
     justify-content: center;
     align-items: center;
     display: flex;
-    color: black;
-
+    color:  rgb(222, 210, 236);
+    font-size: 40px; 
+    letter-spacing: 2px;
+    font-family: "Mulish";
   }
   input:focus {
     outline: none;
 }
-select:focus {
-    outline: none;
-}
+
   div.campo input {
     height: 25px;
     width: 80%;
     border-radius: 10px;
     margin-left: 10%; 
-    border: 4px solid  rgb(198, 168, 240);
+    border: 2px solid  rgb(25, 10, 107);
     text-align: center;
     transition: 0.3s, ease-in-out;
     transition-property: color;
 }
 div.campo input:hover{
-  border: 4px solid   rgb(247, 159, 191);
+  border: 2px solid   rgb(222, 210, 236);
 
-}
-select {    
-        height: 25px;
-        width: 80%;
-        border-radius: 10px;
-        border-radius: 5px;
-        margin-left: 10%; 
-        border: 4px solid  rgb(198, 168, 240);
-        text-align: center; 
-        transition: 0.3s, ease-in-out;
-    
-}
-
-select:hover {
-  border: 4px solid  rgb(161, 255, 244);
-}
-
-select option {
-    color: black;
-    margin-left: 10%;
-    font-size: 15px;
-
-}
-
-.login h2{
-    font-size: 40px; 
-    letter-spacing: 2px;
-    font-family: "Mulish";
 }
 
 
 .campo span {
   margin: 0;
-    margin-left: 10%;
     font-size: 15px; 
     letter-spacing: 1px;
     font-weight: bold;
-    font-family: "Playwrite";
+    font-family: "Roboto";
+    color: rgb(222, 210, 236);
+    padding: 80px;
+    
 
 }
 button {
     height: 50px;
     width: 150px;
-    border-radius: 8px;
+    border-radius: 5px;
     font-weight: bold;
     font-size: 20px;
-    background: rgb(161, 255, 244);
-    border: 0px;
+    background: #0c0126;
     margin: 10px;
-    margin-left: 38%; 
+    margin-left: 41%; 
     letter-spacing: 2px;
     font-family: "Mulish";
-    border: 4px solid  rgb(198, 168, 240);
+    color: rgb(222, 210, 236);
+    border: 3px solid rgb(25, 10, 107);
+    transition:  transform 0.3s ease-in-out;
+}
+
+button:hover{
+transform: scale(1.1);
 
 }
 
@@ -119,17 +100,16 @@ button {
 }
 
 .login a{
-    color: rgb(0, 0, 0);
+    color:  rgb(222, 210, 236);
     font-size: 20px;
     transition: 0.3s, ease-in-out;
-    transition-property: color;
-    margin-left: 41%; 
-    font-family: "Playwrite";
+    transition-property: text-decoration;
+    margin-left: 42%; 
+    font-family: "Roboto";
 
 }
 
 .login a:hover{
-  color: rgb(0, 0, 0);
   text-decoration:  none;
 }
 

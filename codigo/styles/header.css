@@ -5,7 +5,7 @@ body {
 header {
     height: 95px;
     background-color:  rgb(181, 130, 252);
-    border-bottom: 3px solid rgb(0, 0, 0);
+    border-bottom: 3px solid rgb(17, 17, 65);
 }
 
 header .logo {
@@ -19,7 +19,7 @@ header .logo {
 }
 
 header .logo:hover {
-    color: rgb(161, 255, 244);
+    color: rgb(25, 10, 107);
     
 }
 
@@ -38,11 +38,11 @@ header .navbar a {
     transition: 0.3s, ease-in-out;
     transition-property: color;
     text-decoration:  none;
-    font-family: "Playwrite";
+    font-family: "Roboto";
 }
 
 header .navbar a:hover {
-    color: rgb(198, 168, 240);
+    color: rgb(25, 10, 107);
 }
 
 header .navbar{
