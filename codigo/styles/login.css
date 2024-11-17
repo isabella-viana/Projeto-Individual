@@ -1,4 +1,6 @@
  body{
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
  }
  
@@ -23,13 +25,12 @@
     width: 55%;
     margin: 0;
     height: 545px;
-    position: relative;
-    bottom: 638px;
-    left: 615px;
+
     justify-content: center;
     display: flex;
     flex-direction: column;
     background-color: #0c0126;
+    position: fixed;
   }
 
   /* #010826 
