@@ -3,20 +3,22 @@ CREATE DATABASE projeto_individual;
 USE  projeto_individual;
 
 CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
+	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(45),
+    username VARCHAR(45),
+	email VARCHAR(150),
 	senha VARCHAR(50)
 );
-
+select * from usuario;
 CREATE TABLE post (
-	idPost INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+  idPost INT PRIMARY KEY AUTO_INCREMENT,
+  titulo VARCHAR(45),
+  texto VARCHAR(500),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  fkusuario INT,
+  FOREIGN KEY (fkusuario) REFERENCES usuario(idUsuario)
 );
+
 
 CREATE TABLE comentarios (
   idComentarios INT AUTO_INCREMENT PRIMARY KEY, 
@@ -27,6 +29,7 @@ CREATE TABLE comentarios (
   FOREIGN KEY (fkPost) REFERENCES post(idPost), 
   FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) 
 );
+
 CREATE TABLE likes (
   idLikes INT AUTO_INCREMENT PRIMARY KEY, 
   fkPost INT NOT NULL, 
