@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Vida | Sentimentos</title>
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/sentimentos.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a class="logo" href="./index.html">Bella Vida</a>
+            <ul class="navbar">
+                <a href="sentimentosADM.html">Sentimentos</a>
+                <a href="sentimentosADM.html">
+                    <img src="img/cerebro.jpeg" alt="sentimentos">
+                </a>
+                <a id="emocao" href="emocao.html">Emoção</a>
+                <a href="emocao.html">
+                    <img src="img/coracao.jpeg" alt="emocao">
+                </a>
+                <a id="login" href="login.html">Login</a>
+                <a href="login.html">
+                    <img src="icone/login1.jpg" id="login">
+                </a>
+            </ul>
+        </div>
+    </header>
+
+    <div id="card" class="cards">
+        <div class="card-principal">
+            <div class="imagem-interna">
+                <img class="imagem" src="img/default-post-image.jpg" alt="Imagem do post"> <!-- Defina uma imagem padrão -->
+            </div>
+            <div class="texto">
+                <h1>
+                    <input type="text" id="titulo_input" placeholder="Título">
+                </h1>
+                <p class="mensagens">
+                    <input type="text" id="texto_input" placeholder="Escreva seu texto">
+                </p>
+                <button onclick="publicar()">Publicar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para listar todos os posts
+        function listarPosts() {
+            fetch('/post/listar')
+                .then(response => response.json())
+                .then(posts => {
+                    const cardContainer = document.getElementById('card');
+                    cardContainer.innerHTML = ''; // Limpa os posts anteriores
+
+                    posts.forEach(post => {
+                        cardContainer.innerHTML += `
+                            <div class="cards">
+                                <div class="card-principal">
+                                    <div class="imagem-interna">   
+                                        <img class="imagem" src="${post.imagem || 'img/default-post-image.jpg'}" alt="Imagem do post">
+                                    </div>
+                                    <div class="texto">
+                                        <h1>${post.titulo}</h1>
+                                        <p class="mensagens">${post.texto}</p>
+                                        <button onclick="deletarPost(${post.idPost})">Excluir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao listar posts:', error);
+                    alert('Erro ao tentar carregar os posts!');
+                });
+        }
+
+        function publicar() {
+    // Obtendo o ID do usuário armazenado no sessionStorage
+    var idUsuario = sessionStorage.getItem('ID_USUARIO');  // Aqui estamos pegando o ID do usuário da sessão
+
+    // Verificando se o ID do usuário existe
+    if (!idUsuario) {
+        alert("Usuário não autenticado. Não foi possível publicar o post.");
+        return; // Impede a publicação caso o usuário não esteja autenticado
+    }
+
+    // Pegando os valores dos inputs
+    var titulo = document.getElementById('titulo_input').value;
+    var texto = document.getElementById('texto_input').value;
+
+    // Verificando se os campos de título e texto estão preenchidos
+    if (!titulo || !texto) {
+        alert('Preencha todos os campos!');
+        return; // Impede a publicação caso os campos não estejam preenchidos
+    }
+
+    // Construindo o corpo da requisição com os dados do formulário
+    var corpo = {
+        titulo: titulo,
+        descricao: texto,
+        fkUsuario: idUsuario  // Garantindo que o ID do usuário é passado corretamente
+    };
+
+    // Realizando o POST com fetch
+    fetch(`/post/publicar/${idUsuario}`, {
+        method: "POST",  // Definindo o método como POST
+        headers: {
+            "Content-Type": "application/json"  // Definindo o tipo de conteúdo como JSON
+        },
+        body: JSON.stringify(corpo)  // Convertendo o corpo da requisição para formato JSON
+    })
+    .then(function(resposta) {
+        // Verificando se a resposta foi bem-sucedida
+        if (resposta.ok) {
+            alert("Post realizado com sucesso!");
+            window.location = "/dashboard/mural.html";  // Redireciona para o mural após o sucesso
+            limparFormulario();  // Limpa o formulário
+        } else {
+            alert("Erro ao publicar o post. Tente novamente mais tarde.");
+        }
+    })
+    .catch(function(error) {
+        // Capturando qualquer erro na requisição
+        console.log(`#ERRO: ${error}`);
+        alert('Houve um erro ao tentar publicar o post. Por favor, tente novamente mais tarde.');
+    });
+
+    return false;  // Impede o comportamento padrão do formulário
+}
+
+
+// Função para limpar o formulário após o envio
+function limparFormulario() {
+    document.getElementById('titulo_input').value = '';
+    document.getElementById('texto_input').value = '';
+}
+// Função para deletar um post
+function deletarPost(idPost) {
+    console.log("Deletando o post com ID: " + idPost);
+    
+    fetch(`/post/deletar/${idPost}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            window.alert("Post deletado com sucesso!");
+            window.location = "/dashboard/mural.html";  // Redireciona após sucesso
+        } else if (resposta.status === 404) {
+            window.alert("Post não encontrado!");
+        } else {
+            throw new Error("Erro ao tentar deletar o post! Código da resposta: " + resposta.status);
+        }
+    })
+    .catch(function (erro) {
+        console.log(`#ERRO: ${erro}`);
+    });
+}
+
+// Função para limpar os campos de formulário
+function limparFormulario() {
+    document.getElementById('titulo_input').value = '';
+    document.getElementById('texto_input').value = '';
+}
+
+// Função de finalização de carregamento (ex: ocultar o loader)
+function finalizarAguardar() {
+    // Código para ocultar o loader, se necessário
+    console.log('Finalizando o aguardando...');
+}
+       
+    </script>
+
+</body>
+
+</html>

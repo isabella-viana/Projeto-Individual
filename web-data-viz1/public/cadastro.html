@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;600;800&display=swap">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bella Vida|Cadastro</title>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/cadastro.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <a class="logo" href="./index.html">Bella Vida</a>
+      <ul class="navbar">
+        <a href="sentimentosADM.html">Sentimentos</a>
+        <a href="sentimentosADM.html">
+          <img src="img/cerebro.jpeg" alt="sentimentos">
+        </a>
+
+        <a id="emocao" href="emocao.html">Emoção</a>
+        <a href="emocao.html">
+          <img src="img/coracao.jpeg" alt="emocao">
+        </a>
+
+        <a id="login" href="login.html">Login</a>
+        <a href="login.html">
+          <img src="icone/login1.jpg" id="login">
+        </a>
+      </ul>
+    </div>
+
+    <div class="area">
+      <video autoplay muted loop>
+        <source src="img/escrita.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="cadastro">
+      <h2>Cadastro</h2>
+      <div class="formulario">
+        <br>
+        <div class="campo">
+          <span>Nome:</span>
+          <input id="nome_input" type="text" placeholder="Seu nome" />
+        </div>
+        <br>
+        <div class="campo">
+          <span>Username:</span>
+          <input id="username_input" type="text" placeholder="Seu nome de usuário" />
+        </div>
+        <br>
+        <div class="campo">
+          <span>E-mail:</span>
+          <input id="email_input" type="text" placeholder="email@gmail.com" />
+        </div>
+        <br>
+        <div class="campo">
+          <span>Senha:</span>
+          <input id="senha_input" type="password" placeholder="***********" />
+        </div>
+        <br>
+        <div class="campo">
+          <span>Confirmação da Senha:</span>
+          <input id="confirmacao_senha_input" type="password" placeholder="***********" />
+        </div>
+        <br>
+        <button class="botao" onclick="cadastrar()">Cadastrar</button>
+      </div>
+    </div>
+  </header>
+
+</body>
+
+</html>
+
+<script>
+  function cadastrar() {
+    var nome = document.getElementById("nome_input").value;
+    var username = document.getElementById("username_input").value;
+    var email = document.getElementById("email_input").value;
+    var senha = document.getElementById("senha_input").value;
+    var confirmacaoSenha = document.getElementById("confirmacao_senha_input").value;
+
+    if (senha !== confirmacaoSenha) {
+        Swal.fire({
+            title: 'Erro!',
+            text: 'As senhas não coincidem.',
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
+        return false;
+    }
+
+    if (nome === "" || username === "" || email === "" || senha === "" || confirmacaoSenha === "") {
+        Swal.fire({
+            title: 'Erro!',
+            text: 'Por favor, preencha todos os campos.',
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
+        return false;
+    }
+
+    var possuiMaiuscula = false;
+    var possuiMinuscula = false;
+    var possuiNumero = false;
+    var possuiCaracterEspecial = false;
+
+    if (senha.length < 8) {
+        Swal.fire({
+            title: 'Erro!',
+            text: 'A senha deve ter pelo menos 8 caracteres.',
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
+        return false;
+    }
+
+    for (var i = 0; i < senha.length; i++) {
+    const char = senha[i];
+    
+    if (char !== char.toLowerCase()) {
+        possuiMaiuscula = true;
+    }
+
+    if (char !== char.toUpperCase()) {
+        possuiMinuscula = true;
+    }
+
+    if (char >= '0' && char <= '9') {
+        possuiNumero = true;
+    }
+
+    if ((char < 'A' || (char > 'Z' && char < 'a') || char > 'z') && (char < '0' || char > '9')) {
+        possuiCaracterEspecial = true;
+    }
+}
+    if (!possuiMaiuscula) {
+        Swal.fire({
+            title: 'Erro!',
+            text: 'A senha deve conter pelo menos uma letra maiúscula.',
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
+        return false;
+    }
+    if (!possuiMinuscula) {
+        Swal.fire({
+            title: 'Erro!',
+            text: 'A senha deve conter pelo menos uma letra minúscula.',
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
+        return false;
+    }
+    if (!possuiNumero) {
+        Swal.fire({
+            title: 'Erro!',
+            text: 'A senha deve conter pelo menos um número.',
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
+        return false;
+    }
+    if (!possuiCaracterEspecial) {
+        Swal.fire({
+            title: 'Erro!',
+            text: 'A senha deve conter pelo menos um caractere especial.',
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
+        return false;
+    }
+
+    // Se todas as validações passarem, enviar os dados
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nomeServer: nome,
+        usernameServer: username,
+        emailServer: email,
+        senhaServer: senha
+      })
+    })
+      .then(function (resposta) {
+        if (resposta.ok) {
+          Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'Cadastro realizado com sucesso! Redirecionando para a tela de Login...',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+          setTimeout(() => {
+            window.location = "../login.html";
+          }, 2000);
+        } 
+        
+          else {
+          throw new Error("Erro ao realizar o cadastro.");
+        }
+      })
+      .catch(function (erro) {
+        console.log("Erro: ", erro);
+        Swal.fire({
+                title: 'Erro!',
+                text: 'Houve um erro ao tentar realizar o cadastro.',
+                icon: 'error',
+                confirmButtonText: 'Tentar novamente'
+            });
+      });
+
+    return false;
+  }
+</script>

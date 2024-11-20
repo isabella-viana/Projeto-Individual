@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* O card deve ser um contêiner flex, dividindo a tela em 2 */
+.card {
+  display: flex; /* Flexbox ativado */
+  height: 100vh; /* 100% da altura da janela */
+}
+
+/* Video ocupa 50% da largura da tela */
+.area {
+  width: 50%; 
+  height: 100%;
+  position: relative;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; 
+}
+.login {
+  width: 50%;
+  padding: 30px;
+  background-color: #0c0126;
+  color: #ddd;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+
+  /* #010826 
+  #0c0126*/
+  .login h2{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color:  rgb(222, 210, 236);
+    font-size: 40px; 
+    letter-spacing: 2px;
+    font-family: "Mulish";
+  }
+  input:focus {
+    outline: none;
+}
+
+  div.campo input {
+    height: 25px;
+    width: 80%;
+    border-radius: 10px;
+    border: 2px solid  rgb(25, 10, 107);
+    text-align: center;
+    transition: 0.3s, ease-in-out;
+    transition-property: color;
+}
+div.campo input:hover{
+  border: 2px solid   rgb(222, 210, 236);
+
+}
+
+#input_senha{
+  margin-left: 30%;
+}
+
+
+.campo span {
+  margin: 0;
+    font-size: 15px; 
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: "Roboto";
+    color: rgb(222, 210, 236);
+    padding: 80px; 
+
+}
+
+button {
+    height: 50px;
+    width: 150px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    background: #0c0126;
+    margin: 10px;
+    letter-spacing: 2px;
+    font-family: "Mulish";
+    color: rgb(222, 210, 236);
+    border: 3px solid rgb(25, 10, 107);
+    transition:  transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover{
+transform: scale(1.1);
+
+}
+
+.login a{
+  outline: none;
+}
+
+.login a{
+    color:  rgb(222, 210, 236);
+    font-size: 20px;
+    transition: 0.3s, ease-in-out;
+    transition-property: text-decoration;   
+    cursor: pointer;
+
+}
+
+.login a:hover{
+  text-decoration:  none;
+}
+
+.mostrarSenha{
+  display: flex;
+  align-items: center;
+}
+
+.eyeIcon{
+  width: 30px;
+  height: 30px;
+  margin-left: 30px;
+  margin-top: 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: beige;
+  padding: 5px;
+}
+
+   

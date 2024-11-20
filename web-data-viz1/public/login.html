@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="Mulish" href="https://fonts.googleapis.com">
+    <link rel="Roboto" href="https://fonts.googleapis.com">
+    <link rel="Roboto" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Bella Vida|Login</title>
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="logo" href="./index.html">Bella Vida</a>
+            <ul class="navbar">
+
+                <a href="sentimentosADM.html">Sentimentos</a>
+                <a href="sentimentosADM.html">
+                    <img src="img/cerebro.jpeg" alt="sentimentos">
+                </a>
+                <a id="emocao" href="emocao.html">Emoção</a>
+                <a href="emocao.html">
+                    <img src="img/coracao.jpeg" alt="emocao">
+                </a>
+                <a id="login" href="login.html">Login</a>
+                <a href="login.html">
+                    <img src="icone/login1.jpg" id="login">
+                </a>
+
+            </ul>
+        </div>
+</header> 
+
+<div class="card">  
+
+    <div class="area">
+        <video autoplay muted loop>
+            <source src="img/paginas.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="login">
+        <h2>Login</h2>
+        <div class="formulario">
+            <br>
+            <div class="campo">
+                <span>E-mail:</span>
+                <input class="input" id="email_input" type="text" placeholder="email@gmail.com" />
+            </div> <br>
+            <br>
+            <div class="campo">
+                <span>Senha:</span>
+                <div class="mostrarSenha">
+                    <input class="input" type="password" placeholder="Senha" id="senha_input"
+                        onkeyup="mudarEstado()">
+                     <div class="showPass">
+                        <img src="icone/olho aberto.png" class="eyeIcon" onclick="mostrarSenha()" id="btn_eye">
+                    </div>
+                </div>
+            </div> <br>
+            <button class="botao" onclick="login()">Login</button>
+            <p></p>
+            <a id="cadastro" href="cadastro.html">Fazer Cadastro</a>
+        </div>
+
+    </div>
+
+
+
+</div>
+        
+</body>
+
+</html>
+<script>
+
+function mudarEstado(){
+        senha_input.classList.remove('invalid')
+        email_input.classList.remove('invalid')
+    }
+
+
+function mostrarSenha() {
+        var inp = senha_input
+        var eye = btn_eye
+
+        if (inp.type == "password") {
+            inp.type = "text"
+            eye.src = 'icone/olho fechado.png'
+        } else {
+            inp.type = "password"
+            eye.src = 'icone/olho aberto.png'
+        }
+    }
+
+
+    function login() {
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+
+        if (emailVar == "" || senhaVar == "") {
+            alert('Mensagem de erro para todos os campos em branco');
+            return false;
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    Swal.fire({
+                        title: 'Login realizado!',
+                        text: 'Bem-vindo, ' + json.nome + '!',
+                        icon: 'success',
+                        confirmButtonText: 'Continuar'
+                    });
+
+
+                    setTimeout(function () {
+                        window.location = "./sentimentosADM.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Erro no login, por favor tente novamente.',
+                    icon: 'error',
+                    confirmButtonText: 'Tente Novamente'
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+
+
+</script>
