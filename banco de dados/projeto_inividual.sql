@@ -10,25 +10,16 @@ CREATE TABLE usuario (
 	senha VARCHAR(50)
 );
 select * from usuario;
+
 CREATE TABLE post (
   idPost INT PRIMARY KEY AUTO_INCREMENT,
   titulo VARCHAR(45),
   texto VARCHAR(500),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  fkusuario INT,
-  FOREIGN KEY (fkusuario) REFERENCES usuario(idUsuario)
+  fkUsuario INT,
+  FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
-
-
-CREATE TABLE comentarios (
-  idComentarios INT AUTO_INCREMENT PRIMARY KEY, 
-  fkPost INT NOT NULL, 
-  fkUsuario INT NOT NULL, 
-  comentario varchar(300) NOT NULL, 
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-  FOREIGN KEY (fkPost) REFERENCES post(idPost), 
-  FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) 
-);
+ALTER TABLE post CHANGE fkusuario fkUsuario INT;
 
 CREATE TABLE likes (
   idLikes INT AUTO_INCREMENT PRIMARY KEY, 
@@ -50,6 +41,7 @@ CREATE TABLE emocao (
 );
 
 
-
+INSERT INTO post (titulo, texto, fkUsuario) VALUES ('Sexta Feira', 'Staburks ou Violleta', 1);
+  DELETE FROM post WHERE idPost = 1;
 
 
