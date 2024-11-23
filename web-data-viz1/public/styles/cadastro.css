@@ -1,141 +1,151 @@
-select:focus {
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.card {
+  display: flex; /* Flexbox ativado */
+  height: 100vh; /* 100% da altura da janela */
+}
+
+.area {
+  width: 50%; 
+  height: 100%;
+  position: relative;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; 
+}
+
+.cadastro {
+  width: 50%;
+  padding: 30px;
+  background-color: #0c0126;
+  color: #ddd;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* #010826 
+  #0c0126*/
+.cadastro h2 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: rgb(222, 210, 236);
+  font-size: 40px;
+  letter-spacing: 2px;
+  font-family: "Mulish";
+  margin-top: 2px;
+  cursor: default;
+
+}
+
+input:focus {
   outline: none;
 }
 
-
-select {    
+div.campo input {
   height: 25px;
   width: 80%;
   border-radius: 10px;
-  margin-left: 10%; 
-  border: 2px solid  rgb(25, 10, 107);
+  margin-left: 10%;
+  border: 2px solid rgb(25, 10, 107);
   text-align: center;
   transition: 0.3s, ease-in-out;
   transition-property: color;
-    
 }
 
-select:hover {
-  border: 2px solid   rgb(222, 210, 236);
-}
-
-
-body{
-  overflow: hidden;
- }
- 
- .area {
-    width: 45%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  video {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    min-width: 45%;
-    min-height: 30%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-}
-  .cadastro {
-    width: 55%;
-    margin: 0;
-    height: 543px;
-    position: relative;
-    bottom: 638px;
-    left: 615px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    background-color: #0c0126;
-  }
-
-  /* #010826 
-  #0c0126*/
-  .cadastro h2{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    color:  rgb(222, 210, 236);
-    font-size: 40px; 
-    letter-spacing: 2px;
-    font-family: "Mulish";
-    margin-top: 60px;
-    cursor: default;
-
-  }
-  input:focus {
-    outline: none;
-}
-
-  div.campo input {
-    height: 25px;
-    width: 80%;
-    border-radius: 10px;
-    margin-left: 10%; 
-    border: 2px solid  rgb(25, 10, 107);
-    text-align: center;
-    transition: 0.3s, ease-in-out;
-    transition-property: color;
-}
-div.campo input:hover{
-  border: 2px solid   rgb(222, 210, 236);
+div.campo input:hover {
+  border: 2px solid rgb(222, 210, 236);
 
 }
 
 
 .campo span {
   margin: 0;
-    font-size: 15px; 
-    letter-spacing: 1px;
-    font-weight: bold;
-    font-family: "Roboto";
-    color: rgb(222, 210, 236);
-    padding: 80px;
-
-
-}
-button {
-    height: 50px;
-    width: 150px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    background: #0c0126;
-    margin: 10px;
-    margin-left: 41%; 
-    letter-spacing: 2px;
-    font-family: "Mulish";
-    color: rgb(222, 210, 236);
-    border: 3px solid rgb(25, 10, 107);
-    transition:  transform 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-button:hover{
-transform: scale(1.1);
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-family: "Roboto";
+  color: rgb(222, 210, 236);
+  padding: 80px;
 
 }
 
-.cadastro a{
+select:focus {
   outline: none;
 }
 
-.cadastro a{
-    color:  rgb(222, 210, 236);
-    font-size: 20px;
-    transition: 0.3s, ease-in-out;
-    transition-property: text-decoration;
-    margin-left: 42%; 
-  
+
+select {
+  height: 25px;
+  width: 80%;
+  border-radius: 10px;
+  margin-left: 10%;
+  border: 2px solid rgb(25, 10, 107);
+  text-align: center;
+  transition: 0.3s, ease-in-out;
+  transition-property: color;
 
 }
 
-.cadastro a:hover{
-  text-decoration:  none;
+select:hover {
+  border: 2px solid rgb(222, 210, 236);
 }
 
+button {
+  height: 50px;
+  width: 150px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  background: #0c0126;
+  margin: 10px;
+  letter-spacing: 2px;
+  font-family: "Mulish";
+  color: rgb(222, 210, 236);
+  border: 3px solid rgb(25, 10, 107);
+  transition:  transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.1);
+
+}
+
+.cadastro a {
+  outline: none;
+}
+
+.cadastro a {
+  color: rgb(222, 210, 236);
+  font-size: 20px;
+  transition: 0.3s, ease-in-out;
+  transition-property: text-decoration;
+  margin-left: 42%;
+
+
+}
+
+.cadastro a:hover {
+  text-decoration: none;
+}
