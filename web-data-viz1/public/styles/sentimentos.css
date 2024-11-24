@@ -1,20 +1,21 @@
+
 body{
-    background-color: #0c0126;
+    background: linear-gradient(to top, #8c62db, #0f0126); 
 }
 .cards{
     display: flex;
     align-items: center;
     justify-content: center;
     display: flex;
-    justify-content: center;   /* Centraliza horizontalmente */
-    align-items: center;       /* Centraliza verticalmente */
-    flex-direction: column;    /* Coloca o conteúdo em coluna, se necessário */
+    justify-content: center;   
+    align-items: center;       
+    flex-direction: column;    
    
 }
 .card-principal {
 	width: 500px;
 	height: 200px;
-	background-color:  rgb(198, 168, 240);
+    background: linear-gradient(to bottom, #8c62db, #0f0126); 
 	border-radius: 25px;
 	border: solid 2px rgb(25, 10, 107);
 	margin: 20px ;
@@ -23,6 +24,7 @@ body{
     align-items: center;
     text-align: center;
     justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -54,13 +56,14 @@ button {
     border-radius: 5px;
     font-weight: bold;
     font-size: 20px;
-    background: #0c0126;
+    background: rgb(222, 210, 236);
     margin: 10px;
    justify-content: center;
     letter-spacing: 2px;
     font-family: "Mulish";
-    color: rgb(222, 210, 236);
+    color: rgb(25, 10, 107);
     border: 3px solid rgb(25, 10, 107);
+    cursor: pointer;
     transition:  transform 0.3s ease-in-out;
 
 }

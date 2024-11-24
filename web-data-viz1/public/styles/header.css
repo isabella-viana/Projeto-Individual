@@ -4,7 +4,7 @@ body {
 
 header {
     height: 95px;
-    background-color:  rgb(181, 130, 252);
+    background: linear-gradient(to bottom, #8c62db, #0f0126); 
     border-bottom: 3px solid rgb(17, 17, 65);
 }
 

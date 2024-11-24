@@ -9,13 +9,13 @@ body {
   overflow: hidden;
 }
 
-/* O card deve ser um contêiner flex, dividindo a tela em 2 */
+
 .card {
-  display: flex; /* Flexbox ativado */
-  height: 100vh; /* 100% da altura da janela */
+  display: flex; 
+  height: 100vh; 
 }
 
-/* Video ocupa 50% da largura da tela */
+
 .area {
   width: 50%; 
   height: 100%;
@@ -31,7 +31,7 @@ video {
 .login {
   width: 50%;
   padding: 30px;
-  background-color: #0c0126;
+  background: linear-gradient(to bottom, #8c62db, #0f0126); 
   color: #ddd;
   text-align: center;
   height: 100%;

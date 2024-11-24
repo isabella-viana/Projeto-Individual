@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #8c62db, #0f0126); 
+   
+  }
+
+  button {
+    height: 60px;
+    width: 150px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    background: #0c0126;
+    margin: 10px;
+    letter-spacing: 2px;
+    font-family: "Mulish";
+    color: rgb(222, 210, 236);
+    border: 3px solid rgb(25, 10, 107);
+    transition:  transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover{
+transform: scale(1.1);
+
+}
+
+ input {
+    width: 50px; /* Ajusta a largura do campo de número */
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid rgb(25, 10, 107);
+    text-align: center;
+   
+  }
+
+  .intensity-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre as linhas */
+    grid-template-columns: repeat(5, 1fr); /* Cria 5 colunas */
+}
+
+
+
+.intensity-container label {
+    font-size: 16px;
+    color: #fff;
+    margin-right: 5px; /* Espaço entre a label e o input */
+}
+
+input[type="checkbox"] {
+    margin-right: 5px; 
+}
+
+
+  
+ 
