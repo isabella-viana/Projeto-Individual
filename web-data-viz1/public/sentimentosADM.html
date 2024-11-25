@@ -55,13 +55,13 @@
     </div>
 
     <script>
-        // Função para listar todos os posts
+        
         function listarPosts() {
             fetch('/post/listar')
                 .then(response => response.json())
                 .then(posts => {
                     const cardContainer = document.getElementById('card');
-                    cardContainer.innerHTML = ''; // Limpa os posts anteriores
+                    cardContainer.innerHTML = ''; 
 
                     posts.forEach(post => {
                         cardContainer.innerHTML += `
@@ -87,46 +87,44 @@
         }
 
         function publicar() {
-    // Obtendo o ID do usuário armazenado no sessionStorage
-    var idUsuario = sessionStorage.getItem('ID_USUARIO');  // Aqui estamos pegando o ID do usuário da sessão
-
-    // Verificando se o ID do usuário existe
+    
+    var idUsuario = sessionStorage.getItem('ID_USUARIO'); 
+    
     if (!idUsuario) {
         alert("Usuário não autenticado. Não foi possível publicar o post.");
-        return; // Impede a publicação caso o usuário não esteja autenticado
+        return;
     }
 
-    // Pegando os valores dos inputs
+   
     var titulo = document.getElementById('titulo_input').value;
     var texto = document.getElementById('texto_input').value;
 
-    // Verificando se os campos de título e texto estão preenchidos
+
     if (!titulo || !texto) {
         alert('Preencha todos os campos!');
-        return; // Impede a publicação caso os campos não estejam preenchidos
+        return; 
     }
 
-    // Construindo o corpo da requisição com os dados do formulário
+    
     var corpo = {
         titulo: titulo,
         descricao: texto,
-        fkUsuario: idUsuario  // Garantindo que o ID do usuário é passado corretamente
+        fkUsuario: idUsuario  
     };
 
-    // Realizando o POST com fetch
     fetch(`/post/publicar/${idUsuario}`, {
-        method: "POST",  // Definindo o método como POST
+        method: "POST",  
         headers: {
             "Content-Type": "application/json"  // Definindo o tipo de conteúdo como JSON
         },
         body: JSON.stringify(corpo)  // Convertendo o corpo da requisição para formato JSON
     })
+
     .then(function(resposta) {
-        // Verificando se a resposta foi bem-sucedida
         if (resposta.ok) {
             alert("Post realizado com sucesso!");
-            window.location = "/dashboard/mural.html";  // Redireciona para o mural após o sucesso
-            limparFormulario();  // Limpa o formulário
+             listarPosts();
+            limparFormulario();  
         } else {
             alert("Erro ao publicar o post. Tente novamente mais tarde.");
         }
@@ -137,7 +135,7 @@
         alert('Houve um erro ao tentar publicar o post. Por favor, tente novamente mais tarde.');
     });
 
-    return false;  // Impede o comportamento padrão do formulário
+    return false;  
 }
 
 
@@ -177,11 +175,7 @@ function limparFormulario() {
     document.getElementById('texto_input').value = '';
 }
 
-// Função de finalização de carregamento (ex: ocultar o loader)
-function finalizarAguardar() {
-    // Código para ocultar o loader, se necessário
-    console.log('Finalizando o aguardando...');
-}
+
        
     </script>
 
