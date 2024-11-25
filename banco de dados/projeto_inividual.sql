@@ -29,19 +29,17 @@ CREATE TABLE likes (
   FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) 
 );
 
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 CREATE TABLE emocao (
     id INT AUTO_INCREMENT PRIMARY KEY,
     emocao VARCHAR(50) NOT NULL,
     intensidade INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fk_usuario INT,
-    FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+    fkUsuario INT,
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
 
 
-INSERT INTO post (titulo, texto, fkUsuario) VALUES ('Sexta Feira', 'Staburks ou Violleta', 1);
+
+INSERT INTO post (titulo, texto, fkUsuario) VALUES ('Sexta Feira', 'Staburks', 1);	
   DELETE FROM post WHERE idPost = 1;
 
 
