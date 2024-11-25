@@ -29,7 +29,7 @@ CREATE TABLE likes (
   FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) 
 );
 
-CREATE TABLE emocao (
+CREATE TABLE emocoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     emocao VARCHAR(50) NOT NULL,
     intensidade INT NOT NULL,
@@ -38,6 +38,16 @@ CREATE TABLE emocao (
 );
 
 
+
+SELECT 
+         emocao
+        FROM emocoes ;
+         
+         SELECT 
+         *
+        FROM emocao
+         order by created_at desc;
+select *from usuario;
 
 INSERT INTO post (titulo, texto, fkUsuario) VALUES ('Sexta Feira', 'Staburks', 1);	
   DELETE FROM post WHERE idPost = 1;

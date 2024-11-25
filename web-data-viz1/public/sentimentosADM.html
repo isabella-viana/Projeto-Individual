@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="styles/sentimentos.css">
 </head>
 
-<body>
+<body onload="listarPosts()">
+
 
     <header>
         <div class="container">
@@ -54,17 +55,21 @@
         </div>
     </div>
 
+    <div id="teste"  class="card">
+
+    </div>
+
     <script>
         
         function listarPosts() {
             fetch('/post/listar')
                 .then(response => response.json())
-                .then(posts => {
-                    const cardContainer = document.getElementById('card');
-                    cardContainer.innerHTML = ''; 
+                .then(posts => {    
+                    const testeContainer = document.getElementById('teste');
+                    testeContainer.innerHTML = ''; 
 
                     posts.forEach(post => {
-                        cardContainer.innerHTML += `
+                        testeContainer.innerHTML += `
                             <div class="cards">
                                 <div class="card-principal">
                                     <div class="imagem-interna">   
@@ -115,9 +120,9 @@
     fetch(`/post/publicar/${idUsuario}`, {
         method: "POST",  
         headers: {
-            "Content-Type": "application/json"  // Definindo o tipo de conteúdo como JSON
+            "Content-Type": "application/json"  
         },
-        body: JSON.stringify(corpo)  // Convertendo o corpo da requisição para formato JSON
+        body: JSON.stringify(corpo)  
     })
 
     .then(function(resposta) {
@@ -130,7 +135,7 @@
         }
     })
     .catch(function(error) {
-        // Capturando qualquer erro na requisição
+     
         console.log(`#ERRO: ${error}`);
         alert('Houve um erro ao tentar publicar o post. Por favor, tente novamente mais tarde.');
     });
@@ -139,12 +144,11 @@
 }
 
 
-// Função para limpar o formulário após o envio
 function limparFormulario() {
     document.getElementById('titulo_input').value = '';
     document.getElementById('texto_input').value = '';
 }
-// Função para deletar um post
+
 function deletarPost(idPost) {
     console.log("Deletando o post com ID: " + idPost);
     
@@ -157,7 +161,7 @@ function deletarPost(idPost) {
     .then(function (resposta) {
         if (resposta.ok) {
             window.alert("Post deletado com sucesso!");
-            window.location = "/dashboard/mural.html";  // Redireciona após sucesso
+             window.location = "/sentimentosADM.html"
         } else if (resposta.status === 404) {
             window.alert("Post não encontrado!");
         } else {
@@ -169,7 +173,6 @@ function deletarPost(idPost) {
     });
 }
 
-// Função para limpar os campos de formulário
 function limparFormulario() {
     document.getElementById('titulo_input').value = '';
     document.getElementById('texto_input').value = '';

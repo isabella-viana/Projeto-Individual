@@ -117,7 +117,7 @@
 
     </div>
 
-    <button onclick="generateChart()">Gerar Gráfico</button>
+    <button onclick="gerarGrafico()">Gerar Gráfico</button>
 
     <div class="grafico-container">
         <div class="grafico">
@@ -132,63 +132,66 @@
 
 <script>
 
-    function generateChart() {
-        const emotions = []
-        const intensities = []
+    function gerarGrafico() {
+        var emocao = []
+        var intensidade = []
+
 
 
         if (alegria.checked) {
-            emotions.push('alegria')
-            intensities.push(alegria_intensidade.value)
+            emocao.push('alegria')
+            intensidade.push(alegria_intensidade.value)
         }
         if (medo.checked) {
-            emotions.push('medo')
-            intensities.push(medo_intensidade.value)
+            emocao.push('medo')
+            intensidade.push(medo_intensidade.value)
         }
         if (raiva.checked) {
-            emotions.push('raiva')
-            intensities.push(raiva_intensidade.value)
+            emocao.push('raiva')
+            intensidade.push(raiva_intensidade.value)
         }
         if (triste.checked) {
-            emotions.push('triste')
-            intensities.push(triste_intensidade.value)
+            emocao.push('triste')
+            intensidade.push(triste_intensidade.value)
         }
         if (surpreso.checked) {
-            emotions.push('surpreso')
-            intensities.push(surpreso_intensidade.value)
+            emocao.push('surpreso')
+            intensidade.push(surpreso_intensidade.value)
         }
         if (paixao.checked) {
-            emotions.push('paixao')
-            intensities.push(paixao_intensidade.value)
+            emocao.push('paixao')
+            intensidade.push(paixao_intensidade.value)
         }
         if (vergonha.checked) {
-            emotions.push('vergonha')
-            intensities.push(vergonha_intensidade.value)
+            emocao.push('vergonha')
+            intensidade.push(vergonha_intensidade.value)
         }
         if (orgulho.checked) {
-            emotions.push('orgulho')
-            intensities.push(orgulho_intensitidade.value)
+            emocao.push('orgulho')
+            intensidade.push(orgulho_intensitidade.value)
         }
         if (nojo.checked) {
-            emotions.push('nojo')
-            intensities.push(nojo_intensidade.value)
+            emocao.push('nojo')
+            intensidade.push(nojo_intensidade.value)
         }
         if (esperanca.checked) {
-            emotions.push('esperanca')
-            intensities.push(esperanca_intensidade.value)
+            emocao.push('esperanca')
+            intensidade.push(esperanca_intensidade.value)
         }
 
+// // pegar [], dentro da variavel, salvar ele, a rota(fetch), tem que vpassarc o sessionStorage
+//  colocar  usuario, depois colocar o [ ] den tro bdo array
 
-
+// controller, fazer a função enviar, dentro dela fazer uma  [], colocar o req, .body var.
         // Cria o gráfico
         const ctx = document.getElementById('emotionChart').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: emotions,
+                labels: emocao,
                 datasets: [{
                     label: 'Intensidade das Emoções',
-                    data: intensities,
+                    data: intensidade,
                     backgroundColor: 'rgba(75, 192, 192, 0.5)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
