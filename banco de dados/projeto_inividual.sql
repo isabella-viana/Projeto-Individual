@@ -1,3 +1,4 @@
+drop database if exists projeto_individual;
 CREATE DATABASE projeto_individual;
 
 USE  projeto_individual;
@@ -19,7 +20,7 @@ CREATE TABLE post (
   fkUsuario INT,
   FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
-ALTER TABLE post CHANGE fkusuario fkUsuario INT;
+
 
 CREATE TABLE likes (
   idLikes INT AUTO_INCREMENT PRIMARY KEY, 
@@ -33,11 +34,14 @@ CREATE TABLE emocoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     emocao VARCHAR(50) NOT NULL,
     intensidade INT NOT NULL,
+    dataEmocao datetime default current_timestamp,
     fkUsuario INT,
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
 
+select * from emocoes;
 
+truncate table emocoes;
 
 SELECT 
          emocao
