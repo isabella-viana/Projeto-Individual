@@ -24,7 +24,6 @@
         <div class="container">
             <a class="logo" href="./index.html">Bella Vida</a>
             <ul class="navbar">
-
                 <a href="sentimentosADM.html">Sentimentos</a>
                 <a href="sentimentosADM.html">
                     <img src="img/cerebro.jpeg" alt="sentimentos">
@@ -33,11 +32,14 @@
                 <a href="emocao.html">
                     <img src="img/coracao.jpeg" alt="emocao">
                 </a>
+                <a id="emocao" href="quiz.html">Quiz</a>
+                <a href="emocao.html">
+                    <img src="img/coracao.jpeg" alt="emocao">
+                </a>
                 <a id="login" href="login.html">Login</a>
                 <a href="login.html">
                     <img src="icone/login1.jpg" id="login">
                 </a>
-
             </ul>
         </div>
     </header>
@@ -123,7 +125,7 @@
         <div class="grafico">
             <canvas id="emotionChart"></canvas>
         </div>
-        
+
     </div>
 
 </body>
@@ -135,8 +137,6 @@
     function gerarGrafico() {
         var emocao = []
         var intensidade = []
-
-
 
         if (alegria.checked) {
             emocao.push('alegria')
@@ -179,35 +179,62 @@
             intensidade.push(esperanca_intensidade.value)
         }
 
-// // pegar [], dentro da variavel, salvar ele, a rota(fetch), tem que vpassarc o sessionStorage
-//  colocar  usuario, depois colocar o [ ] den tro bdo array
-
-// controller, fazer a função enviar, dentro dela fazer uma  [], colocar o req, .body var.
-        // Cria o gráfico
-        const ctx = document.getElementById('emotionChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: emocao,
-                datasets: [{
-                    label: 'Intensidade das Emoções',
-                    data: intensidade,
-                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
+        fetch('/dash/gerarGrafico/1', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 10
-                    }
+            body: JSON.stringify({ emocao, intensidade }),
+        })
+            .then((response) => response.json())
+            .then((data) => console.log('Dados enviados com sucesso:', data))
+            .catch((error) => console.error('Erro ao enviar:', error));
+
+            const ctx = document.getElementById('emotionChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: emocao,
+        datasets: [{
+            label: 'Intensidade das Emoções',
+            data: intensidade,
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'white' // Cor da legenda
                 }
             }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'white' // Cor dos valores no eixo X
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.2)' // Cor da grade no eixo X
+                }
+            },
+            y: {
+                beginAtZero: true,
+                max: 10,
+                ticks: {
+                    color: 'white' // Cor dos valores no eixo Y
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.2)' // Cor da grade no eixo Y
+                }
+            }
+        }
+    }
+});
 
-        });
     }
 
     // function getEmotionColor(emotion) {

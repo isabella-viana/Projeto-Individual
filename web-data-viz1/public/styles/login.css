@@ -11,13 +11,13 @@ body {
 
 
 .card {
-  display: flex; 
-  height: 100vh; 
+  display: flex;
+  height: 100vh;
 }
 
 
 .area {
-  width: 50%; 
+  width: 50%;
   height: 100%;
   position: relative;
 }
@@ -26,12 +26,13 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; 
+  z-index: -1;
 }
+
 .login {
   width: 50%;
   padding: 30px;
-  background: linear-gradient(to bottom, #8c62db, #0f0126); 
+  background: linear-gradient(to bottom, #8c62db, #0f0126);
   color: #ddd;
   height: 100%;
   display: flex;
@@ -43,95 +44,97 @@ video {
 }
 
 
-  /* #010826 
+/* #010826 
   #0c0126*/
-  .login h2{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    color:  rgb(222, 210, 236);
-    font-size: 40px; 
-    letter-spacing: 2px;
-    font-family: "Mulish";
-  }
-  input:focus {
-    outline: none;
+.login h2 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: rgb(222, 210, 236);
+  font-size: 40px;
+  letter-spacing: 2px;
+  font-family: "Mulish";
 }
 
-  div.campo input {
-    height: 25px;
-    width: 80%;
-    border-radius: 10px;
-    border: 2px solid  rgb(25, 10, 107);
-    text-align: center;
-    transition: 0.3s, ease-in-out;
-    transition-property: color;
-}
-div.campo input:hover{
-  border: 2px solid   rgb(222, 210, 236);
-
-}
-
-#input_senha{
-  margin-left: 30%;
-}
-
-
-.campo span {
-  margin: 0;
-    font-size: 15px; 
-    letter-spacing: 1px;
-    font-weight: bold;
-    font-family: "Roboto";
-    color: rgb(222, 210, 236);
-    padding: 80px; 
-
-}
-
-button {
-    height: 50px;
-    width: 150px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    background: #0c0126;
-    margin: 10px;
-    letter-spacing: 2px;
-    font-family: "Mulish";
-    color: rgb(222, 210, 236);
-    border: 3px solid rgb(25, 10, 107);
-    transition:  transform 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-button:hover{
-transform: scale(1.1);
-
-}
-
-.login a{
+input:focus {
   outline: none;
 }
 
-.login a{
-    color:  rgb(222, 210, 236);
-    font-size: 20px;
-    transition: 0.3s, ease-in-out;
-    transition-property: text-decoration;   
-    cursor: pointer;
+div.campo input {
+  height: 25px;
+  width: 80%;
+  border-radius: 10px;
+  border: 2px solid rgb(25, 10, 107);
+  text-align: center;
+  transition: 0.3s, ease-in-out;
+  transition-property: color;
+  cursor: pointer;
+}
+
+div.campo input:hover {
+  border: 2px solid rgb(222, 210, 236);
+}
+
+#input_senha {
+  margin-left: 30%;
+}
+
+.campo span {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 1px;
+  height: auto;
+  font-weight: bold;
+  font-family: "Roboto";
+  color: rgb(222, 210, 236);
+  padding: 80px;
+  z-index: -999;
+}
+
+button {
+  height: 50px;
+  width: 150px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  background: #0c0126;
+  margin: 10px;
+  letter-spacing: 2px;
+  font-family: "Mulish";
+  color: rgb(222, 210, 236);
+  border: 3px solid rgb(25, 10, 107);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.1);
 
 }
 
-.login a:hover{
-  text-decoration:  none;
+.login a {
+  outline: none;
 }
 
-.mostrarSenha{
+.login a {
+  color: rgb(222, 210, 236);
+  font-size: 20px;
+  transition: 0.3s, ease-in-out;
+  transition-property: text-decoration;
+  cursor: pointer;
+
+}
+
+.login a:hover {
+  text-decoration: none;
+}
+
+.mostrarSenha {
   display: flex;
   align-items: center;
 }
 
-.eyeIcon{
+.eyeIcon {
   width: 30px;
   height: 30px;
   margin-left: 30px;
@@ -141,4 +144,3 @@ transform: scale(1.1);
   background-color: beige;
   padding: 5px;
 }
-
