@@ -14,7 +14,29 @@ function salvarEmocoes(req, res) {
     );
         
 }
+function obterRanking(req, res) {
+    const idUsuario = req.params.idUsuario;
+
+    if (!idUsuario) {
+        res.status(400).send("ID do usuário não informado.");
+        return;
+    }
+
+    dashModel.obterUltimasEmocoes(idUsuario)
+        .then((resultados) => {
+            if (resultados.length > 0) {
+                res.status(200).json(resultados);
+            } else {
+                res.status(204).send("Nenhum registro encontrado.");
+            }
+        })
+        .catch((erro) => {
+            console.error(erro);
+            res.status(500).json(erro);
+        });
+}
 
 module.exports = {
-    salvarEmocoes
+    salvarEmocoes,
+    obterRanking
 };

@@ -121,12 +121,32 @@
 
     <button onclick="gerarGrafico()">Gerar Gráfico</button>
 
-    <div class="grafico-container">
-        <div class="grafico">
-            <canvas id="emotionChart"></canvas>
-        </div>
+    >
 
+    <div class="ranking-grafico-container">
+        <div class="ranking-container">
+            <h2>Ranking de Emoções</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Emoção</th>
+                        <th>Intensidade</th>
+                        <th>Horário</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Os dados serão preenchidos dinamicamente pelo script -->
+                </tbody>
+            </table>
+        </div>
+        <div class="grafico-container">
+            <div class="grafico">
+                <canvas id="emotionChart"></canvas>
+            </div>
+        </div>
     </div>
+
+
 
 </body>
 
@@ -190,65 +210,93 @@
             .then((data) => console.log('Dados enviados com sucesso:', data))
             .catch((error) => console.error('Erro ao enviar:', error));
 
-            const ctx = document.getElementById('emotionChart').getContext('2d');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: emocao,
-        datasets: [{
-            label: 'Intensidade das Emoções',
-            data: intensidade,
-            backgroundColor: 'rgba(75, 192, 192, 0.5)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                labels: {
-                    color: 'white' // Cor da legenda
-                }
-            }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: 'white' // Cor dos valores no eixo X
-                },
-                grid: {
-                    color: 'rgba(255, 255, 255, 0.2)' // Cor da grade no eixo X
-                }
+        const ctx = document.getElementById('emotionChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: emocao,
+                datasets: [{
+                    label: 'Intensidade das Emoções',
+                    data: intensidade,
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
             },
-            y: {
-                beginAtZero: true,
-                max: 10,
-                ticks: {
-                    color: 'white' // Cor dos valores no eixo Y
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white' // Cor da legenda
+                        }
+                    }
                 },
-                grid: {
-                    color: 'rgba(255, 255, 255, 0.2)' // Cor da grade no eixo Y
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white' // Cor dos valores no eixo X
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)' // Cor da grade no eixo X
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        ticks: {
+                            color: 'white' // Cor dos valores no eixo Y
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)' // Cor da grade no eixo Y
+                        }
+                    }
                 }
             }
-        }
-    }
-});
+        });
 
     }
 
-    // function getEmotionColor(emotion) {
-    //         const colors = {
-    //             'alegria': 'rgba(255, 159, 64, 0.6)',
-    //             'medo': 'rgba(255, 99, 132, 0.6)',
-    //             'raiva': 'rgba(255, 99, 71, 0.6)',
-    //             'triste': 'rgba(54, 162, 235, 0.6)',
-    //             'surpreso': 'rgba(153, 102, 255, 0.6)',
-    //             'paixao': 'rgba(255, 99, 255, 0.6)',
-    //             'vergonha': 'rgba(255, 255, 0, 0.6)',
-    //             'orgulho': 'rgba(75, 192, 192, 0.6)',
-    //             'nojo': 'rgba(0, 204, 102, 0.6)',
-    //             'esperanca': 'rgba(0, 255, 255, 0.6)'
-    //         };
-    //     }
+    function atualizarRanking() {
+    const idUsuario = 1; // Substitua com o ID do usuário autenticado
+
+    fetch(`/dash/ranking/${idUsuario}`)
+        .then((response) => {
+            if (response.status === 204) {
+                // Caso não haja dados, limpar o ranking e exibir uma mensagem
+                const tbody = document.querySelector(".ranking-container tbody");
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="3">Nenhum registro encontrado.</td>
+                    </tr>
+                `;
+                throw new Error("Nenhum registro encontrado.");
+            }
+            if (!response.ok) {
+                throw new Error("Erro ao buscar ranking.");
+            }
+            return response.json();
+        })
+        .then((dados) => {
+            const tbody = document.querySelector(".ranking-container tbody");
+            tbody.innerHTML = ""; // Limpa os dados existentes
+
+            dados.forEach((emocao) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${emocao.emocao}</td>
+                    <td>${emocao.intensidade}</td>
+                    <td>${emocao.horario}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        })
+        .catch((erro) => {
+            console.error("Erro ao atualizar ranking:", erro);
+        });
+}
+
+document.addEventListener("DOMContentLoaded", atualizarRanking);
+
+
 </script>

@@ -9,6 +9,19 @@ function salvarEmocoes(emocao, intensidade, idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function obterUltimasEmocoes(idUsuario) {
+    const instrucaoSql = `
+        SELECT emocao, intensidade, DATE_FORMAT(dataEmocao, '%H:%i:%s') AS horario
+        FROM emocoes
+        WHERE fkUsuario = ${idUsuario}
+        ORDER BY dataEmocao DESC
+        LIMIT 10;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    salvarEmocoes
+    salvarEmocoes,
+    obterUltimasEmocoes
 };

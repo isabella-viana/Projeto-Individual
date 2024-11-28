@@ -88,10 +88,12 @@ transform: scale(1.1);
  
 }
 
-.grafico-container{
-  height: 50%;
-  width: 100%;
-
+.grafico-container {
+  width: 70%; 
+  background-color: #1e1e2f;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .grafico{
@@ -99,6 +101,62 @@ transform: scale(1.1);
   width: 100%;
   height: 100%;
 }
+
+.ranking-grafico-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #1e1e2f;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.ranking-container {
+  width: 30%; /* Ranking ocupa 30% do espaço */
+  background-color: #2e2e3f;
+  border-radius: 8px;
+  color: #fff;
+  padding: 15px;
+}
+
+.ranking-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.ranking-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.ranking-container th,
+.ranking-container td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #444;
+  color: #ddd;
+}
+
+.ranking-container th {
+  background-color: #3e3e4f;
+  color: #fff;
+}
+
+.ranking-container tr:nth-child(even) {
+  background-color: #29293d;
+}
+
+.grafico-container {
+  width: 70%; /* Gráfico ocupa 70% do espaço */
+  background-color: #1e1e2f;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 
 
 
