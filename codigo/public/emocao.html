@@ -24,8 +24,8 @@
         <div class="container">
             <a class="logo" href="./index.html">Bella Vida</a>
             <ul class="navbar">
-                <a href="sentimentosADM.html">Sentimentos</a>
-                <a href="sentimentosADM.html">
+                <a href="sentimentos.html">Sentimentos</a>
+                <a href="sentimentos.html">
                     <img src="img/cerebro.jpeg" alt="sentimentos">
                 </a>
                 <a id="emocao" href="emocao.html">Emoção</a>
@@ -121,8 +121,6 @@
 
     <button onclick="gerarGrafico()">Gerar Gráfico</button>
 
-    >
-
     <div class="ranking-grafico-container">
         <div class="ranking-container">
             <h2>Ranking de Emoções</h2>
@@ -141,7 +139,7 @@
         </div>
         <div class="grafico-container">
             <div class="grafico">
-                <canvas id="emotionChart"></canvas>
+            <canvas id="emotionChart"></canvas>
             </div>
         </div>
     </div>
@@ -187,9 +185,9 @@
             intensidade.push(vergonha_intensidade.value)
         }
         if (orgulho.checked) {
-            emocao.push('orgulho')
-            intensidade.push(orgulho_intensitidade.value)
-        }
+    emocao.push('orgulho');
+    intensidade.push(orgulho_intensidade.value);
+}
         if (nojo.checked) {
             emocao.push('nojo')
             intensidade.push(nojo_intensidade.value)
@@ -199,7 +197,7 @@
             intensidade.push(esperanca_intensidade.value)
         }
 
-        fetch('/dash/gerarGrafico/1', {
+        fetch(`/dash/gerarGrafico/${sessionStorage.ID_USUARIO}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -228,17 +226,17 @@
                 plugins: {
                     legend: {
                         labels: {
-                            color: 'white' // Cor da legenda
+                            color: 'white' 
                         }
                     }
                 },
                 scales: {
                     x: {
                         ticks: {
-                            color: 'white' // Cor dos valores no eixo X
+                            color: 'white' 
                         },
                         grid: {
-                            color: 'rgba(255, 255, 255, 0.2)' // Cor da grade no eixo X
+                            color: 'rgba(255, 255, 255, 0.2)'   
                         }
                     },
                     y: {
@@ -258,10 +256,19 @@
     }
 
     function atualizarRanking() {
-    const idUsuario = 1; // Substitua com o ID do usuário autenticado
+    // Recupera o ID do usuário armazenado no sessionStorage
+    const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
+    if (!idUsuario) {
+        console.error("ID do usuário não encontrado.");
+        return; // Se não encontrar o ID, não faz a requisição
+    }
+
+    // Realiza a requisição para o servidor
     fetch(`/dash/ranking/${idUsuario}`)
         .then((response) => {
+            console.log('Status da resposta:', response.status);
+
             if (response.status === 204) {
                 // Caso não haja dados, limpar o ranking e exibir uma mensagem
                 const tbody = document.querySelector(".ranking-container tbody");
@@ -273,11 +280,12 @@
                 throw new Error("Nenhum registro encontrado.");
             }
             if (!response.ok) {
-                throw new Error("Erro ao buscar ranking.");
+                throw new Error(`Erro ao buscar ranking. Status: ${response.status}`);
             }
             return response.json();
         })
         .then((dados) => {
+            console.log('Dados recebidos do servidor:', dados);
             const tbody = document.querySelector(".ranking-container tbody");
             tbody.innerHTML = ""; // Limpa os dados existentes
 
@@ -297,6 +305,8 @@
 }
 
 document.addEventListener("DOMContentLoaded", atualizarRanking);
+
+
 
 
 </script>

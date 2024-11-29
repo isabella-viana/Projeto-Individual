@@ -80,8 +80,6 @@ transform: scale(1.1);
 }
 
 
-
-
 .intensidade-container label {
     font-size: 16px;
     color: #fff;
@@ -89,8 +87,8 @@ transform: scale(1.1);
 }
 
 .grafico-container {
-  width: 70%; 
-  background-color: #1e1e2f;
+  width: 80%; 
+  background-color: #8c62db;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -110,14 +108,16 @@ transform: scale(1.1);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-top: 20px;
+  height: 45%;
 }
 
 .ranking-container {
-  width: 30%; /* Ranking ocupa 30% do espaço */
+  width: 30%; 
   background-color: #2e2e3f;
   border-radius: 8px;
   color: #fff;
   padding: 15px;
+  overflow: scroll;
 }
 
 .ranking-container h2 {
@@ -134,27 +134,28 @@ transform: scale(1.1);
 
 .ranking-container th,
 .ranking-container td {
-  text-align: left;
   padding: 8px;
   border: 1px solid #444;
   color: #ddd;
 }
 
 .ranking-container th {
-  background-color: #3e3e4f;
+  background-color: #210e36;
   color: #fff;
 }
 
 .ranking-container tr:nth-child(even) {
-  background-color: #29293d;
+  background-color: #5959d4;
 }
 
 .grafico-container {
-  width: 70%; /* Gráfico ocupa 70% do espaço */
+  width: 70%; 
   background-color: #1e1e2f;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
 }
 
 

@@ -26,8 +26,8 @@
             <a class="logo" href="./index.html">Bella Vida</a>
             <ul class="navbar">
 
-                <a href="sentimentosADM.html">Sentimentos</a>
-                <a href="sentimentosADM.html">
+                <a href="sentimentos.html">Sentimentos</a>
+                <a href="sentimentos.html">
                     <img src="img/cerebro.jpeg" alt="sentimentos">
                 </a>
                 <a id="emocao" href="emocao.html">Emoção</a>
@@ -41,56 +41,62 @@
 
             </ul>
         </div>
-</header> 
+    </header>
 
-<div class="card">  
+    <div class="card">
 
-    <div class="area">
-        <video autoplay muted loop>
-            <source src="img/paginas.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="login">
-        <h2>Login</h2>
-        <div class="formulario" style="display:block;">
-            <br>
-            <div class="campo">
-                <span>E-mail:</span>
-                <input class="input" id="email_input" type="text" placeholder="email@gmail.com" />
-            </div> <br>
-            <div class="campo">
-                <span>Senha:</span>
-                <div class="mostrarSenha">
-                    <input class="input" type="password" placeholder="Senha" id="senha_input"
-                        onkeyup="mudarEstado()">
-                     <div class="showPass">
-                        <img src="icone/olho aberto.png" class="eyeIcon" onclick="mostrarSenha()" id="btn_eye">
+        <div class="area">
+            <video autoplay muted loop>
+                <source src="img/paginas.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="login">
+            <h2>Login</h2>
+            <div class="formulario" style="display:block;">
+                <br>
+                <div class="campo">
+                    <div style="display: flex; flex-direction: column;">
+
+                    <span>E-mail:</span>
+                    <input class="input" id="email_input" type="text" placeholder="email@gmail.com" />
                     </div>
-                </div>
-            </div> <br>
-            <button class="botao" onclick="login()">Login</button>
-            <p></p>
-            <a id="cadastro" href="cadastro.html">Fazer Cadastro</a>
+                </div> <br>
+                <div class="campo">
+                    <div style="display: flex; flex-direction: column;">
+                        <span>Senha:</span>
+
+                        <div class="mostrarSenha">
+                            <input class="input" type="password" placeholder="Senha" id="senha_input"
+                                onkeyup="mudarEstado()">
+                            <div class="showPass">
+                                <img src="icone/olho aberto.png" class="eyeIcon" onclick="mostrarSenha()" id="btn_eye">
+                            </div>
+                        </div>
+                    </div>
+                </div> <br>
+                <button class="botao" onclick="login()">Login</button>
+                <p></p>
+                <a id="cadastro" href="cadastro.html">Fazer Cadastro</a>
+            </div>
+
         </div>
 
+
+
     </div>
 
-
-
-</div>
-        
 </body>
 
 </html>
 <script>
 
-function mudarEstado(){
+    function mudarEstado() {
         senha_input.classList.remove('invalid')
         email_input.classList.remove('invalid')
     }
 
 
-function mostrarSenha() {
+    function mostrarSenha() {
         var inp = senha_input
         var eye = btn_eye
 
@@ -149,7 +155,7 @@ function mostrarSenha() {
 
 
                     setTimeout(function () {
-                        window.location = "./sentimentosADM.html";
+                        window.location = "./sentimentos.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

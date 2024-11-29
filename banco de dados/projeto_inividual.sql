@@ -16,7 +16,7 @@ CREATE TABLE post (
   idPost INT PRIMARY KEY AUTO_INCREMENT,
   titulo VARCHAR(45),
   texto VARCHAR(500),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ dataPost TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   fkUsuario INT,
   FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
@@ -31,7 +31,7 @@ CREATE TABLE likes (
 );
 
 CREATE TABLE emocoes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    idEmocao INT AUTO_INCREMENT PRIMARY KEY,
     emocao VARCHAR(50) NOT NULL,
     intensidade INT NOT NULL,
     dataEmocao datetime default current_timestamp,
@@ -41,7 +41,7 @@ CREATE TABLE emocoes (
 
 select * from emocoes;
 
-truncate table emocoes;
+select * from usuario;
 
 SELECT 
          emocao

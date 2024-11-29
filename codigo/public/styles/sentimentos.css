@@ -1,6 +1,9 @@
 
 body{
     background: linear-gradient(to top, #8c62db, #0f0126); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100vh;
 }
 .cards{
     display: flex;
