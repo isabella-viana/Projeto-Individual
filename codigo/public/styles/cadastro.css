@@ -12,8 +12,8 @@ body {
 }
 
 .card {
-  display: flex; /* Flexbox ativado */
-  height: 100vh; /* 100% da altura da janela */
+  display: flex; 
+  height: 100vh; 
 }
 
 .area {
@@ -58,19 +58,19 @@ video {
 
 }
 
-input:focus {
+.input:focus {
   outline: none;
 }
 
-div.campo input {
+.campo input {
   height: 25px;
-  width: 80%;
+  width: 400px;
   border-radius: 10px;
-  margin-left: 10%;
   border: 2px solid rgb(25, 10, 107);
   text-align: center;
   transition: 0.3s, ease-in-out;
   transition-property: color;
+  cursor: pointer;
 }
 
 div.campo input:hover {
@@ -86,30 +86,10 @@ div.campo input:hover {
   font-weight: bold;
   font-family: "Roboto";
   color: rgb(222, 210, 236);
-  padding: 80px;
 
 }
 
-select:focus {
-  outline: none;
-}
 
-
-select {
-  height: 25px;
-  width: 80%;
-  border-radius: 10px;
-  margin-left: 10%;
-  border: 2px solid rgb(25, 10, 107);
-  text-align: center;
-  transition: 0.3s, ease-in-out;
-  transition-property: color;
-
-}
-
-select:hover {
-  border: 2px solid rgb(222, 210, 236);
-}
 
 button {
   height: 50px;
@@ -148,4 +128,10 @@ button:hover {
 
 .cadastro a:hover {
   text-decoration: none;
+}
+
+.campo1{
+  display: flex; 
+  flex-direction: column;
+
 }

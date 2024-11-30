@@ -39,7 +39,15 @@ CREATE TABLE emocoes (
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
 
+desc emocoes;
+
 select * from emocoes;
+
+SELECT emocao, intensidade, DATE_FORMAT(dataEmocao, '%H:%i:%s') AS horario
+    FROM emocoes
+    WHERE fkUsuario = 1
+    ORDER BY dataEmocao DESC
+    LIMIT 10;
 
 select * from usuario;
 
