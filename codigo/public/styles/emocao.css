@@ -159,6 +159,46 @@ transform: scale(1.1);
   align-items: center;
 }
 
+.grafico-container {
+  width: 70%; 
+  background: linear-gradient(to bottom, #8c62db, #0f0126); 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+}
+
+.kpis {
+  width: 28%; 
+  background: #210e36;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.kpis h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.kpis h3 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.kpis ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.kpis ul li {
+  padding: 5px;
+  background-color: #3b1a52;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
 
 
 

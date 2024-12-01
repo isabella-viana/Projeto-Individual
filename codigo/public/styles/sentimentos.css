@@ -1,55 +1,58 @@
-
-body{
-    background: linear-gradient(to top, #8c62db, #0f0126); 
+body {
+    background: linear-gradient(to top, #8c62db, #0f0126);
     background-repeat: no-repeat;
-    background-size: contain;
-    height: 100vh;
+    background-size: cover;  /* Altera para cobrir toda a tela */
+    margin: 0;  /* Remover margem para evitar que o conteúdo saia da tela */
 }
-.cards{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    justify-content: center;   
-    align-items: center;       
-    flex-direction: column;    
-   
-}
-.card-principal {
-	width: 500px;
-	height: 200px;
-    background: linear-gradient(to bottom, #8c62db, #0f0126); 
-	border-radius: 25px;
-	border: solid 2px rgb(25, 10, 107);
-	margin: 20px ;
-	padding: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
+.cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.card-principal {
+    width: 500px;
+    background: linear-gradient(to bottom, #8c62db, #0f0126);
+    border-radius: 25px;
+    border: solid 2px rgb(25, 10, 107);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center; 
+    margin: 20px;
+    height: auto; 
 }
 
 .imagem {
-width: 70px;
-height: 70px;
-margin-top: 10px;
-margin-bottom: 20px;
-border-radius: 50% ;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
-
-
 
 h1 {
-font-family: "Mulish";
-font-size: 20px;
+    font-family: "Mulish";
+    font-size: 20px;
 }
 
-.mensagens { 
-    letter-spacing: 1px;
+.mensagens {
     font-family: "Roboto";
-	font-size: 15px;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.informacoes {
+    font-family: "Mulish";
+    font-size: 16px;
+    color: white;
+    margin-bottom: 10px; /* Espaço entre informações e o título */
+    text-align: center;  /* Centraliza as informações */
 }
 
 
@@ -61,38 +64,34 @@ button {
     font-size: 20px;
     background: rgb(222, 210, 236);
     margin: 10px;
-   justify-content: center;
     letter-spacing: 2px;
     font-family: "Mulish";
     color: rgb(25, 10, 107);
     border: 3px solid rgb(25, 10, 107);
     cursor: pointer;
-    transition:  transform 0.3s ease-in-out;
-
+    transition: transform 0.3s ease-in-out;
+    align-self: center;
 }
 
-
-button:hover{
-transform: scale(1.1);
-
+button:hover {
+    transform: scale(1.1);
 }
- input {
+
+input {
     height: 25px;
     width: 80%;
     border-radius: 10px;
     border: 2px solid rgb(25, 10, 107);
     text-align: center;
-    transition: 0.3s, ease-in-out;
+    transition: 0.3s ease-in-out;
     transition-property: color;
-    
-
+    margin: 10px 0; /* Espaço entre os campos de entrada */
 }
- input:hover{
-  border: 2px solid  rgb(222, 210, 236);
 
+input:hover {
+    border: 2px solid rgb(222, 210, 236);
 }
+
 input:focus {
     outline: none;
 }
-
-	

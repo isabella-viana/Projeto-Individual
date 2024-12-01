@@ -32,10 +32,6 @@
                 <a href="emocao.html">
                     <img src="img/coracao.jpeg" alt="emocao">
                 </a>
-                <a id="emocao" href="quiz.html">Quiz</a>
-                <a href="emocao.html">
-                    <img src="img/coracao.jpeg" alt="emocao">
-                </a>
                 <a id="login" href="login.html">Login</a>
                 <a href="login.html">
                     <img src="icone/login1.jpg" id="login">
@@ -44,7 +40,7 @@
         </div>
     </header>
 
-    <h1>Suas Emoções</h1>
+    <h1>O que você está sentindo no momento ?</h1>
 
 
     <div class="intensidade-container">
@@ -101,7 +97,7 @@
             <div>
                 <label>😎 Orgulhoso:</label>
                 <input type="checkbox" id="orgulho">
-                <input type="number" id="orgulho_intensitidade" min="1" max="10" value="0">
+                <input type="number" id="orgulho_intensidade" min="1" max="10" value="0">
             </div>
 
             <div>
@@ -133,15 +129,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Os dados serão preenchidos dinamicamente pelo script -->
+
                 </tbody>
             </table>
         </div>
         <div class="grafico-container">
             <div class="grafico">
-            <canvas id="emotionChart"></canvas>
+                <canvas id="graficoEmocao"></canvas>
+            </div>
+            <div class="kpis">
+                <h2>KPIs das Emoções</h2>
+                <div>
+                    <h3>Mais Intensidade</h3>
+                    <ul id="kpi-maior">
+
+                    </ul>
+                </div>
+                <div>
+                    <h3>Menos Intensidade</h3>
+                    <ul id="kpi-menor">
+
+                    </ul>
+                </div>
             </div>
         </div>
+
     </div>
 
 
@@ -185,9 +197,9 @@
             intensidade.push(vergonha_intensidade.value)
         }
         if (orgulho.checked) {
-    emocao.push('orgulho');
-    intensidade.push(orgulho_intensidade.value);
-}
+            emocao.push('orgulho');
+            intensidade.push(orgulho_intensidade.value);
+        }
         if (nojo.checked) {
             emocao.push('nojo')
             intensidade.push(nojo_intensidade.value)
@@ -196,6 +208,40 @@
             emocao.push('esperanca')
             intensidade.push(esperanca_intensidade.value)
         }
+
+        function calcularKPI() {
+            var emocaoIntensidade = [];
+            for (var i = 0; i < emocao.length; i++) {
+                emocaoIntensidade.push({ nome: emocao[i], intensidade: parseInt(intensidade[i]) });
+            }
+
+            emocaoIntensidade.sort(function (a, b) {
+                return b.intensidade - a.intensidade;
+            });
+
+            var maisIntensa = emocaoIntensidade.slice(0, 3);
+            var menosIntensa = emocaoIntensidade.slice(-3);
+
+            var kpiMaior = document.getElementById('kpi-maior');
+            var kpiMenor = document.getElementById('kpi-menor');
+
+            kpiMaior.innerHTML = '';
+            kpiMenor.innerHTML = '';
+
+
+            for (var i = 0; i < maisIntensa.length; i++) {
+                kpiMaior.innerHTML += `<li>${maisIntensa[i].nome}: ${maisIntensa[i].intensidade}</li>`;
+            }
+
+
+            for (var i = 0; i < menosIntensa.length; i++) {
+                kpiMenor.innerHTML += `<li>${menosIntensa[i].nome}: ${menosIntensa[i].intensidade}</li>`;
+            }
+        }
+
+
+        calcularKPI();
+
 
         fetch(`/dash/gerarGrafico/${sessionStorage.ID_USUARIO}`, {
             method: 'POST',
@@ -208,7 +254,8 @@
             .then((data) => console.log('Dados enviados com sucesso:', data))
             .catch((error) => console.error('Erro ao enviar:', error));
 
-        const ctx = document.getElementById('emotionChart').getContext('2d');
+
+        const ctx = document.getElementById('graficoEmocao').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
@@ -226,86 +273,85 @@
                 plugins: {
                     legend: {
                         labels: {
-                            color: 'white' 
+                            color: 'white'
                         }
                     }
                 },
                 scales: {
                     x: {
                         ticks: {
-                            color: 'white' 
+                            color: 'white'
                         },
                         grid: {
-                            color: 'rgba(255, 255, 255, 0.2)'   
+                            color: 'rgba(255, 255, 255, 0.2)'
                         }
                     },
                     y: {
                         beginAtZero: true,
                         max: 10,
                         ticks: {
-                            color: 'white' // Cor dos valores no eixo Y
+                            color: 'white'
                         },
                         grid: {
-                            color: 'rgba(255, 255, 255, 0.2)' // Cor da grade no eixo Y
+                            color: 'rgba(255, 255, 255, 0.2)'
                         }
                     }
                 }
             }
         });
-
     }
 
     function atualizarRanking() {
-    // Recupera o ID do usuário armazenado no sessionStorage
-    const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
-    if (!idUsuario) {
-        console.error("ID do usuário não encontrado.");
-        return; // Se não encontrar o ID, não faz a requisição
-    }
+        const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
-    // Realiza a requisição para o servidor
-    fetch(`/dash/ranking/${idUsuario}`)
-        .then((response) => {
-            console.log('Status da resposta:', response.status);
+        if (!idUsuario) {
+            console.error("ID do usuário não encontrado.");
+            return;
+        }
 
-            if (response.status === 204) {
-                // Caso não haja dados, limpar o ranking e exibir uma mensagem
-                const tbody = document.querySelector(".ranking-container tbody");
-                tbody.innerHTML = `
+
+        fetch(`/dash/ranking/${idUsuario}`)
+            .then((response) => {
+                console.log('Status da resposta:', response.status);
+
+                if (response.status === 204) {
+                    const tbody = document.querySelector(".ranking-container tbody");
+                    tbody.innerHTML = `
                     <tr>
                         <td colspan="3">Nenhum registro encontrado.</td>
                     </tr>
                 `;
-                throw new Error("Nenhum registro encontrado.");
-            }
-            if (!response.ok) {
-                throw new Error(`Erro ao buscar ranking. Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then((dados) => {
-            console.log('Dados recebidos do servidor:', dados);
-            const tbody = document.querySelector(".ranking-container tbody");
-            tbody.innerHTML = ""; // Limpa os dados existentes
+                    throw new Error("Nenhum registro encontrado.");
+                }
+                if (!response.ok) {
+                    throw new Error(`Erro ao buscar ranking. Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((dadosRecebidos) => {
+                const corpoTabelaRanking = document.querySelector(".ranking-container tbody");
+                corpoTabelaRanking.innerHTML = "";
 
-            dados.forEach((emocao) => {
-                const tr = document.createElement("tr");
-                tr.innerHTML = `
-                    <td>${emocao.emocao}</td>
-                    <td>${emocao.intensidade}</td>
-                    <td>${emocao.horario}</td>
-                `;
-                tbody.appendChild(tr);
+
+                for (let i = 0; i < dadosRecebidos.length; i++) {
+                    const emocao = dadosRecebidos[i];
+                    const linhaTabela = document.createElement("tr");
+                    linhaTabela.innerHTML = `
+            <td>${emocao.emocao}</td>
+            <td>${emocao.intensidade}</td>
+            <td>${emocao.horario}</td>
+        `;
+                    corpoTabelaRanking.appendChild(linhaTabela);
+                }
+            })
+            .catch((erro) => {
+                console.error("Erro ao atualizar ranking:", erro);
             });
-        })
-        .catch((erro) => {
-            console.error("Erro ao atualizar ranking:", erro);
-        });
-}
 
-document.addEventListener("DOMContentLoaded", atualizarRanking);
+    }
 
+    window.onload = atualizarRanking;
 
 
 
