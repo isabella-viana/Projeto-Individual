@@ -19,7 +19,6 @@ var indexRouter = require("./src/routes/index");
 var dashRouter = require("./src/routes/dash");
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
-var medidasRouter = require("./src/routes/medidas");
 var postRouter = require("./src/routes/post");
 
 
@@ -33,7 +32,6 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/dash", dashRouter);
 app.use("/avisos", avisosRouter);
-app.use("/medidas", medidasRouter);
 app.use("/post", postRouter);
 
 

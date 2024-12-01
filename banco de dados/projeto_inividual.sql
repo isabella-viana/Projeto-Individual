@@ -20,7 +20,7 @@ CREATE TABLE post (
   fkUsuario INT,
   FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
-
+drop table likes;
 
 CREATE TABLE likes (
   idLikes INT AUTO_INCREMENT PRIMARY KEY, 
@@ -61,7 +61,12 @@ SELECT
          order by created_at desc;
 select *from usuario;
 
-INSERT INTO post (titulo, texto, fkUsuario) VALUES ('Sexta Feira', 'Staburks', 1);	
   DELETE FROM post WHERE idPost = 1;
 
+ SELECT 
+            p.idPost, p.titulo, p.texto, p.dataPost, 
+            u.nome, u.username, u.idUsuario AS fkUsuario
+        FROM post p
+        JOIN usuario u ON p.fkUsuario = u.idUsuario
+        ORDER BY p.dataPost DESC;
 

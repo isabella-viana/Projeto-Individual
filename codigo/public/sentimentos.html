@@ -171,7 +171,7 @@ fetch(`/post/deletar/${idPost}`, {
 .then(function (resposta) {
     if (resposta.ok) {
         window.alert("Post deletado com sucesso!");
-         window.location = "/sentimentosADM.html"
+         window.location = "/sentimentos.html"
     } else if (resposta.status === 404) {
         window.alert("Post não encontrado!");
     } else {

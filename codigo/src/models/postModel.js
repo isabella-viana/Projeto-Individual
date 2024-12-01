@@ -4,9 +4,11 @@ function listar() {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucaoSql = `
        SELECT 
-         *
-        FROM post
-         order by created_at desc;
+p.idPost, p.titulo, p.texto, p.dataPost, 
+u.nome, u.username, u.idUsuario AS fkUsuario
+FROM post p
+JOIN usuario u ON p.fkUsuario = u.idUsuario
+ORDER BY p.dataPost DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
