@@ -67,7 +67,7 @@
                             <input class="input" type="password" placeholder="Senha" id="senha_input"
                                 onkeyup="mudarEstado()">
                             <div class="showPass">
-                                <img src="icone/olho aberto.png" class="olhoSenha" onclick="mostrarSenha()" id="btn_eye">
+                                <img src="icone/olho aberto.png" class="olhoSenha" onclick="mostrarSenha()" id="btn_olho">
                             </div>
                         </div>
                     </div>
@@ -95,17 +95,18 @@
 
 
     function mostrarSenha() {
-        var inp = senha_input
-        var eye = btn_eye
+    var campoSenha = senha_input;
+    var olho = btn_olho;
 
-        if (inp.type == "password") {
-            inp.type = "text"
-            eye.src = 'icone/olho fechado.png'
-        } else {
-            inp.type = "password"
-            eye.src = 'icone/olho aberto.png'
-        }
+    if (campoSenha.type == "password") {
+        campoSenha.type = "text";
+        olho.src = 'icone/olho fechado.png';
+    } else {
+        campoSenha.type = "password";
+        olho.src = 'icone/olho aberto.png';
     }
+}
+
 
 
     function login() {
@@ -154,7 +155,7 @@
 
                     setTimeout(function () {
                         window.location = "./sentimentos.html";
-                    }, 1000); // apenas para exibir o loading
+                    }, 1000); 
 
                 });
 

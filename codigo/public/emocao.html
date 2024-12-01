@@ -114,8 +114,10 @@
         </div>
 
     </div>
-
+<div class="btn_container">
     <button onclick="gerarGrafico()">Gerar Gráfico</button>
+</div>
+    
 
     <div class="ranking-grafico-container">
         <div class="ranking-container">
@@ -293,63 +295,67 @@
                             color: 'white'
                         },
                         grid: {
-                            color: 'rgba(255, 255, 255, 0.2)'
+                            color: 'rgba(255, 255, 255, 0.2)',
                         }
                     }
                 }
             }
         });
     }
-
     function atualizarRanking() {
 
-        const idUsuario = sessionStorage.getItem('ID_USUARIO');
+const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
-        if (!idUsuario) {
-            console.error("ID do usuário não encontrado.");
+if (!idUsuario) {
+    console.error("ID do usuário não encontrado.");
+    return;
+}
+
+fetch(`/dash/ranking/${idUsuario}`)
+    .then((response) => {
+        console.log('Status da resposta:', response.status);
+
+        if (response.status === 204) {
+            const tbody = document.querySelector(".ranking-container tbody");
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="3">Nenhum registro encontrado.</td>
+                </tr>
+            `;
+            return; 
+        }
+
+        if (!response.ok) {
+            console.error(`Erro ao buscar ranking. Status: ${response.status}`);
             return;
         }
 
+        return response.json();
+    })
+    .then((dadosRecebidos) => {
+   
+        if (!dadosRecebidos) return;
 
-        fetch(`/dash/ranking/${idUsuario}`)
-            .then((response) => {
-                console.log('Status da resposta:', response.status);
+        const corpoTabelaRanking = document.querySelector(".ranking-container tbody");
+        corpoTabelaRanking.innerHTML = "";
 
-                if (response.status === 204) {
-                    const tbody = document.querySelector(".ranking-container tbody");
-                    tbody.innerHTML = `
-                    <tr>
-                        <td colspan="3">Nenhum registro encontrado.</td>
-                    </tr>
-                `;
-                    throw new Error("Nenhum registro encontrado.");
-                }
-                if (!response.ok) {
-                    throw new Error(`Erro ao buscar ranking. Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((dadosRecebidos) => {
-                const corpoTabelaRanking = document.querySelector(".ranking-container tbody");
-                corpoTabelaRanking.innerHTML = "";
+        for (let i = 0; i < dadosRecebidos.length; i++) {
+            const emocao = dadosRecebidos[i];
+            const linhaTabela = document.createElement("tr");
+            linhaTabela.innerHTML = `
+                <td>${emocao.emocao}</td>
+                <td>${emocao.intensidade}</td>
+                <td>${emocao.horario}</td>
+            `;
+            corpoTabelaRanking.appendChild(linhaTabela);
+        }
+    })
+    .catch((erro) => {
+        console.error("Erro ao atualizar ranking:", erro);
+    });
 
+}
 
-                for (let i = 0; i < dadosRecebidos.length; i++) {
-                    const emocao = dadosRecebidos[i];
-                    const linhaTabela = document.createElement("tr");
-                    linhaTabela.innerHTML = `
-            <td>${emocao.emocao}</td>
-            <td>${emocao.intensidade}</td>
-            <td>${emocao.horario}</td>
-        `;
-                    corpoTabelaRanking.appendChild(linhaTabela);
-                }
-            })
-            .catch((erro) => {
-                console.error("Erro ao atualizar ranking:", erro);
-            });
-
-    }
 
     window.onload = atualizarRanking;
 

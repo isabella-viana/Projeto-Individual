@@ -30,10 +30,6 @@
                 <a href="emocao.html">
                     <img src="img/coracao.jpeg" alt="emocao">
                 </a>
-                <a id="emocao" href="quiz.html">Quiz</a>
-                <a href="emocao.html">
-                    <img src="img/coracao.jpeg" alt="emocao">
-                </a>
                 <a id="login" href="login.html">Login</a>
                 <a href="login.html">
                     <img src="icone/login1.jpg" id="login">
@@ -77,24 +73,22 @@
             const testeContainer = document.getElementById('teste');
             testeContainer.innerHTML = '';
 
-          
             var idUsuario = sessionStorage.getItem('ID_USUARIO'); 
 
-            posts.forEach(post => {
-              
+        
+            for (let i = 0; i < posts.length; i++) {
+                var post = posts[i];
                 var excluirButton = '';
 
-              
                 if (idUsuario == post.fkUsuario) {
                     excluirButton = `<button onclick="deletarPost(${post.idPost})">Excluir</button>`;
                 }
 
-              
                 testeContainer.innerHTML += `
                     <div class="cards">
                         <div class="card-principal">
                             <p class="informacoes">
-                                <span class="autor">@${post.username} ${post.nome}</span><br>
+                                <span class="autor"><b>@${post.username} </b> ${post.nome}</span>
                                 <span class="data">Data: ${new Date(post.dataPost).toLocaleString()}</span>
                             </p>
                             <div class="texto">
@@ -105,13 +99,14 @@
                         </div>
                     </div>
                 `;
-            });
+            }
         })
         .catch(error => {
             console.error('Erro ao listar posts:', error);
             alert('Erro ao tentar carregar os posts!');
         });
 }
+
 
 
     function publicar() {
@@ -123,16 +118,13 @@ if (!idUsuario) {
     return;
 }
 
-
 var titulo = document.getElementById('titulo_input').value;
 var texto = document.getElementById('texto_input').value;
-
 
 if (!titulo || !texto) {
     alert('Preencha todos os campos!');
     return; 
 }
-
 
 var corpo = {
     titulo: titulo,

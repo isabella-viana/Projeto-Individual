@@ -1,56 +1,77 @@
 * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom, #8c62db, #0f0126); 
-    height: 101vh;
-  
-   
-  }
-
-  button {
-    height: 60px;
-    width: 150px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    background: #0c0126;
-    margin: 10px;
-    letter-spacing: 2px;
-    font-family: "Mulish";
-    color: rgb(222, 210, 236);
-    border: 3px solid rgb(25, 10, 107);
-    transition:  transform 0.3s ease-in-out;
-    cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
-button:hover{
-transform: scale(1.1);
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom, #8c62db, #0f0126);
+  height: 101vh;
+}
+
+button {
+  height: 60px;
+  width: 150px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  background: #0c0126;
+  letter-spacing: 2px;
+  font-family: "Mulish";
+  color: rgb(222, 210, 236);
+  border: 3px solid rgb(25, 10, 107);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 
 }
 
- input {
-    width: 50px; 
-    height: 30px;
-    text-align: center;
-    border-radius: 5px;
-    border: 2px solid rgb(25, 10, 107);
-    text-align: center;
-    
-  }
+.btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
 
-  .intensidade-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  
-  
 }
 
-.superior{
+h1 {
+  font-size: 40px;
+  color: rgb(222, 210, 236);
+  font-family: "Mulish";
+  font-weight: bold;
+  transition-property: color;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding-top: 14px;
+  padding-bottom: 14px;
+
+}
+
+button:hover {
+  transform: scale(1.1);
+
+}
+
+input {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid rgb(25, 10, 107);
+  text-align: center;
+
+}
+
+.intensidade-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+
+}
+
+.superior {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -58,13 +79,13 @@ transform: scale(1.1);
 
 }
 
-.superior div{
+.superior div {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.inferior{
+.inferior {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -73,7 +94,7 @@ transform: scale(1.1);
 }
 
 
-.inferior div{
+.inferior div {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -81,20 +102,20 @@ transform: scale(1.1);
 
 
 .intensidade-container label {
-    font-size: 16px;
-    color: #fff;
- 
+  font-size: 16px;
+  color: #fff;
+
 }
 
 .grafico-container {
-  width: 80%; 
+  width: 80%;
   background-color: #8c62db;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.grafico{
+.grafico {
   display: flex;
   width: 100%;
   height: 100%;
@@ -113,8 +134,8 @@ transform: scale(1.1);
 
 
 .ranking-container {
-  width: 30%; 
-  background: linear-gradient(to bottom, #8c62db, #0f0126); 
+  width: 30%;
+  background: linear-gradient(to bottom, #8c62db, #0f0126);
   border-radius: 8px;
   color: #fff;
   padding: 15px;
@@ -150,8 +171,8 @@ transform: scale(1.1);
 }
 
 .grafico-container {
-  width: 70%; 
-  background: linear-gradient(to bottom, #8c62db, #0f0126); 
+  width: 70%;
+  background: linear-gradient(to bottom, #8c62db, #0f0126);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -160,8 +181,8 @@ transform: scale(1.1);
 }
 
 .grafico-container {
-  width: 70%; 
-  background: linear-gradient(to bottom, #8c62db, #0f0126); 
+  width: 70%;
+  background: linear-gradient(to bottom, #8c62db, #0f0126);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -170,7 +191,7 @@ transform: scale(1.1);
 }
 
 .kpis {
-  width: 28%; 
+  width: 28%;
   background: #210e36;
   padding: 20px;
   border-radius: 8px;
@@ -190,7 +211,6 @@ transform: scale(1.1);
 
 .kpis ul {
   list-style: none;
-  padding-left: 0;
 }
 
 .kpis ul li {
@@ -199,8 +219,3 @@ transform: scale(1.1);
   margin-bottom: 5px;
   border-radius: 5px;
 }
-
-
-
-  
- 

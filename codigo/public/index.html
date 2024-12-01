@@ -225,26 +225,26 @@
 
 
 <script>
-    function showSentiment(card, sentiment, emoji) {
-        const frontH3 = card.querySelector('.front h3');
-        const frontEmoji = card.querySelector('.front span');
+    function mostrarSentimento(cartao, sentimento, emoji) {
+        const frenteH3 = cartao.querySelector('.front h3');
+        const frenteEmoji = cartao.querySelector('.front span');
 
-        // Verifica se o card já está virado (tem a classe 'flipped')
-        if (card.classList.contains("flipped")) {
-            // Se o card já está virado, volta ao conteúdo original
-            frontH3.textContent = frontH3.dataset.originalText;
-            frontEmoji.textContent = frontEmoji.dataset.originalEmoji;
+        // Verifica se o cartão já está virado (tem a classe 'flipped')
+        if (cartao.classList.contains("flipped")) {
+            // Se o cartão já está virado, volta ao conteúdo original
+            frenteH3.textContent = frenteH3.dataset.textoOriginal;
+            frenteEmoji.textContent = frenteEmoji.dataset.emojiOriginal;
         } else {
             // Se não está virado, armazena o conteúdo original
-            frontH3.dataset.originalText = frontH3.textContent;
-            frontEmoji.dataset.originalEmoji = frontEmoji.textContent;
+            frenteH3.dataset.textoOriginal = frenteH3.textContent;
+            frenteEmoji.dataset.emojiOriginal = frenteEmoji.textContent;
 
             // Muda o conteúdo para o sentimento e emoji fornecido
-            frontH3.textContent = sentiment.split('→')[0].trim();
-            frontEmoji.textContent = emoji;
+            frenteH3.textContent = sentimento.split('→')[0].trim();
+            frenteEmoji.textContent = emoji;
         }
 
-        // Alterna a classe 'flipped' para virar o card
-        card.classList.toggle("flipped");
+        // Alterna a classe 'flipped' para virar o cartão
+        cartao.classList.toggle("flipped");
     }
 </script>
