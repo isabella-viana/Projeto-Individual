@@ -1,4 +1,4 @@
-drop database if exists projeto_individual;
+
 CREATE DATABASE projeto_individual;
 
 USE  projeto_individual;
@@ -20,15 +20,6 @@ CREATE TABLE post (
   fkUsuario INT,
   FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
-drop table likes;
-
-CREATE TABLE likes (
-  idLikes INT AUTO_INCREMENT PRIMARY KEY, 
-  fkPost INT NOT NULL, 
-  fkUsuario INT NOT NULL, 
-  FOREIGN KEY (fkPost) REFERENCES post(idPost), 
-  FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) 
-);
 
 CREATE TABLE emocoes (
     idEmocao INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,7 +30,6 @@ CREATE TABLE emocoes (
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
 
-desc emocoes;
 
 select * from emocoes;
 
@@ -63,10 +53,10 @@ select *from usuario;
 
   DELETE FROM post WHERE idPost = 1;
 
- SELECT 
-            p.idPost, p.titulo, p.texto, p.dataPost, 
-            u.nome, u.username, u.idUsuario AS fkUsuario
-        FROM post p
-        JOIN usuario u ON p.fkUsuario = u.idUsuario
-        ORDER BY p.dataPost DESC;
+SELECT 
+    p.idPost, p.titulo, p.texto, p.dataPost, 
+    u.nome, u.username, u.idUsuario AS fkUsuario
+FROM post p
+JOIN usuario u ON p.fkUsuario = u.idUsuario
+ORDER BY p.dataPost DESC;
 
